@@ -1,0 +1,42 @@
+<PROJET Nom="Déploiements" Version="20250803.1245" Accès="Privé" Vue="Tableau" Description="Ce projet permet d'effectuer les suivis des déploiements de notre solution chez les clients.">
+   <SECTIONS>
+      <SECTION Nom="?">
+         <ACTIVITES>
+            <ACTIVITE>
+               <NOM>Achat des équipements</NOM>
+               <DESCRIPTION>Ces activités visent à procéder aux achats des équipements.  Sans ces équipements il est impossible de déployer notre solution chez le client.</DESCRIPTION>
+               <ACTIVITES>
+                  <ACTIVITE>
+                     <NOM>Vérification des inventaires</NOM>
+                     <DESCRIPTION>Vérifier si les équipements sont en inventaire.  Si oui, procéder à un achat pour remplacer les équipements, et prendre immédiatement les équipements en inventaire et passer à la configuration de ces équipements.  S'ils ne sont pas en inventaire, continuer avec les activités d'achat.</DESCRIPTION>
+                  </ACTIVITE>
+                  <ACTIVITE>
+                     <NOM>Produire les requis d'achat</NOM>
+                     <DESCRIPTION>Préparer les requis d'achat et les transmettre aux départements des Achats.</DESCRIPTION>
+                  </ACTIVITE>
+                  <ACTIVITE>
+                     <NOM>Attente de la réception des équipements</NOM>
+                     <DESCRIPTION>Faire les suivis pour agir dès la réception des équipements.</DESCRIPTION>
+                  </ACTIVITE>
+               </ACTIVITES>
+            </ACTIVITE>
+            <ACTIVITE>
+               <NOM>Configuration des équipements</NOM>
+               <DESCRIPTION>Configurer les équipements du client.</DESCRIPTION>
+            </ACTIVITE>
+            <ACTIVITE>
+               <NOM>Test des équipements</NOM>
+               <DESCRIPTION>Tester les équipements du client pour s'assurer d'être prêt pour le déploiement.</DESCRIPTION>
+            </ACTIVITE>
+            <ACTIVITE>
+               <NOM>Déploiement des équipements</NOM>
+               <DESCRIPTION>Déployer les équipements chez le client.</DESCRIPTION>
+            </ACTIVITE>
+            <ACTIVITE>
+               <NOM>Clôture du déploiement</NOM>
+               <DESCRIPTION>Finaliser le déploiement.</DESCRIPTION>
+            </ACTIVITE>
+         </ACTIVITES>
+      </SECTION>
+   </SECTIONS>
+</PROJET>

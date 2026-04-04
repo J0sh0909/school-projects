@@ -1,0 +1,85 @@
+enable
+conf t
+
+
+hostname R4
+
+int g0/0
+desc vers-R1
+no shut
+ip add 172.18.255.10 255.255.255.252
+ip ospf hello-interval 4
+ip ospf dead-interval 16
+bandwidth 1000
+ip ospf 1 area 1
+
+
+int g1/0
+desc vers-sw1
+no shut
+
+int g1/0.50
+encapsulation dot1q 50
+desc donnees1
+ip add 172.18.0.1 255.255.255.0
+ip ospf hello-interval 4
+ip ospf dead-interval 16
+ip helper-address 172.18.254.254
+no shut
+
+int g1/0.60
+encapsulation dot1q 60
+desc voix1
+ip add 172.18.1.1 255.255.255.0
+ip ospf hello-interval 4
+ip ospf dead-interval 16
+ip helper-address 172.18.254.254
+no shut
+
+int g1/0.70
+encapsulation dot1q 70
+desc domotique1
+ip add 172.18.2.1 255.255.255.0
+ip ospf hello-interval 4
+ip ospf dead-interval 16
+ip helper-address 172.18.254.254
+no shut
+
+int g1/0.80
+encapsulation dot1q 80
+desc video1
+ip add 172.18.3.1 255.255.255.0
+ip ospf hello-interval 4
+ip ospf dead-interval 16
+ip helper-address 172.18.254.254
+no shut
+
+int f2/0
+desc vers-R2
+no shut
+ip add 172.17.255.18 255.255.255.252
+ip ospf hello-interval 4
+ip ospf dead-interval 16
+bandwidth 100
+ip ospf 1 area 1
+
+int e3/0
+desc vers-R3
+no shut
+ip add 172.18.255.14 255.255.255.252
+ip ospf hello-interval 4
+ip ospf dead-interval 16
+bandwidth 10
+ip ospf 1 area 1
+
+router ospf 1
+router-id 10.5.5.5
+auto-cost reference-bandwidth 10000
+network 172.18.0.0 0.0.3.255 area 1
+passive-interface g1/0.50
+passive-interface g1/0.60
+passive-interface g1/0.70
+passive-interface g1/0.80
+
+
+do copy run start

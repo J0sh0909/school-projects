@@ -1,0 +1,74 @@
+ena
+conf t
+hostname SW2-H33 
+ip routing
+Banner motd #Access Interdit# 
+
+lldp run
+
+Vlan 10
+name CLIENTS-EX-1
+Vlan 20
+name CLIENTS-EX-2
+Vlan 11
+name CLIENTS-EX-V-1
+Vlan 21
+name CLIENTS-EX-V-2
+Vlan 50
+name CLIENTS-INT
+Vlan 100
+name SERV-COMM
+Vlan 110
+name SERV-ADMIN
+vlan 999
+name PROXMOX
+VLAN 666
+name vlan natif
+
+int f0/1
+Desc E1-CLI-EX-1 et CLIENT-EX-V-1
+sw mode access
+sw access vlan 10
+sw voice vlan 11
+Spanning-tree portfast
+powerline inline auto
+lldp transmit
+lldp receive
+
+
+interface f0/2
+Desc E1-CLI-EX-2 et CLIENT-EX-V-2
+sw mode access
+sw access vlan 20
+sw voice vlan 21
+Spanning-tree portfast
+powerline inline auto
+lldp transmit
+lldp receive
+
+interface f0/3
+Desc vers E1-SW3
+sw trunk encapsulation dot1q
+sw mode trunk
+sw nonegotiate
+sw trunk allowed vlan 10,11,20,21
+sw trunk native vlan 666
+powerline inline auto
+
+int f0/5
+Desc E1-CLI-EX-VOIX1
+sw mode access
+sw access vlan 11
+Spanning-tree portfast
+powerline inline auto
+lldp transmit
+lldp receive
+
+int f0/6
+Desc E1-CLI-EX-VOIX2
+sw mode access
+sw access vlan 21
+Spanning-tree portfast
+powerline inline auto
+lldp transmit
+lldp receive

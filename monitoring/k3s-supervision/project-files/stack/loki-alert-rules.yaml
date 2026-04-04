@@ -1,0 +1,52 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: loki-alert-rules
+  namespace: monitoring
+data:
+  rules.yaml: |
+    groups:
+      # ===================================================================
+      # MÉTRIQUES JOSUE MOLINA
+      # ===================================================================
+      - name: log-errors
+        rules:
+          - alert: LogErrorRateWarning
+            expr: sum(rate({namespace=~".+", app!="loki"} |~ "(?i)error" [1m])) by (job) > 5
+            for: 2m
+            labels:
+              severity: warning
+            annotations:
+              summary: "Taux d'erreurs logs élevé pour {{ $labels.job }}"
+              description: "Le job {{ $labels.job }} génère plus de 5 erreurs/sec depuis 2 minutes"
+          - alert: LogErrorRateCritical
+            expr: sum(rate({namespace=~".+", app!="loki"} |~ "(?i)error" [1m])) by (job) > 15
+            for: 2m
+            labels:
+              severity: critical
+            annotations:
+              summary: "Taux d'erreurs logs critique pour {{ $labels.job }}"
+              description: "Le job {{ $labels.job }} génère plus de 15 erreurs/sec depuis 2 minutes"
+      # ===================================================================
+      # MÉTRIQUES TEAMMATES
+      # ===================================================================
+      - name: glpi-http-errors
+        rules:
+          - alert: GLPIHttpErrorRateWarning
+            expr: sum(rate({namespace="monitoring", pod=~"glpi.*", container="log-collector"} |~ "HTTP/1\\.\\d\" [45]\\d\\d" [5m])) * 60 > 5
+            for: 2m
+            labels:
+              severity: warning
+              membre: taha_sarti
+            annotations:
+              summary: "[TAHA] Taux d'erreurs HTTP GLPI élevé"
+              description: "GLPI génère plus de 5 erreurs HTTP 4xx/5xx par minute depuis 2 minutes"
+          - alert: GLPIHttpErrorRateCritical
+            expr: sum(rate({namespace="monitoring", pod=~"glpi.*", container="log-collector"} |~ "HTTP/1\\.\\d\" [45]\\d\\d" [5m])) * 60 > 20
+            for: 2m
+            labels:
+              severity: critical
+              membre: taha_sarti
+            annotations:
+              summary: "[TAHA] Taux d'erreurs HTTP GLPI critique"
+              description: "GLPI génère plus de 20 erreurs HTTP 4xx/5xx par minute depuis 2 minutes"

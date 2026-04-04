@@ -1,0 +1,2 @@
+#!/bin/sh
+kubectl patch configmap loki-loki-stack -n monitoring --type=json -p='[{"op":"replace","path":"/data","value":{"datasources.yaml":"apiVersion: 1\ndatasources:\n- name: Loki\n  type: loki\n  access: proxy\n  url: http://loki:3100\n  isDefault: false\n  uid: P8E80F9AEF21F6940\n"}}]'

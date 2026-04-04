@@ -1,0 +1,22 @@
+enable
+conf t
+
+
+hostname R0
+
+int g0/0
+desc vers-sw0
+no shut
+ip add 192.168.255.14 255.255.255.240
+ip ospf hello-interval 4
+ip ospf dead-interval 16
+bandwidth 1000
+ip ospf priority 255
+ip ospf 1 area 1
+
+router ospf 1
+router-id 255.255.255.255
+auto-cost reference-bandwidth 10000
+network 192.168.255.0 0.0.0.15 area 0
+
+do copy run start

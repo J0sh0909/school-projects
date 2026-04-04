@@ -1,0 +1,46 @@
+enable
+conf t
+
+hostname SW1
+
+vlan 50
+name don1
+vlan 60
+name voix1
+vlan 70
+name dom1
+vlan 80
+name video1
+
+int G0/1
+desc vers-R4
+sw mode trunk
+sw trunk allowed vlan 50,60,70,80
+no shut
+
+int f1/1
+desc vers-don1
+sw mode access
+sw access vlan 50
+no shut
+
+int f2/1
+desc vers-voix1
+sw mode access
+sw access vlan 60
+no shut
+
+int f3/1
+desc vers-dom1
+sw mode access
+sw access vlan 70
+no shut
+
+int f4/1
+desc vers-video1
+sw mode access
+sw access vlan 80
+no shut
+
+
+do copy run start

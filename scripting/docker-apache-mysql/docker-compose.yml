@@ -1,0 +1,44 @@
+services:
+  db:
+    image: mysql:latest
+    container_name: serveur_mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: ma_db_web
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./table.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - 3307:3306
+    networks:
+      - app-network
+  web:
+    build: .
+    image: apachephp-dhcp
+    container_name: serveur_web
+    restart: always
+    environment:
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - web_data:/var/www/html
+    ports:
+      - 5000:443
+    depends_on:
+      - db
+    networks:
+      - app-network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 400M
+volumes:
+  mysql_data:
+  web_data:
+networks:
+  app-network:
+    driver: bridge

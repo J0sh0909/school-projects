@@ -1,0 +1,150 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: glpi-mariadb
+  namespace: monitoring
+spec:
+  serviceName: glpi-mariadb
+  replicas: 1
+  selector:
+    matchLabels:
+      app: glpi-mariadb
+  template:
+    metadata:
+      labels:
+        app: glpi-mariadb
+    spec:
+      containers:
+        - name: mariadb
+          image: mariadb:11
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: "<your-db-root-password>"
+            - name: MYSQL_DATABASE
+              value: "glpi"
+            - name: MYSQL_USER
+              value: "glpi"
+            - name: MYSQL_PASSWORD
+              value: "<your-db-password>"
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - name: mariadb-data
+              mountPath: /var/lib/mysql
+  volumeClaimTemplates:
+    - metadata:
+        name: mariadb-data
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: longhorn-2replicas
+        resources:
+          requests:
+            storage: 10Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: glpi-mariadb
+  namespace: monitoring
+spec:
+  selector:
+    app: glpi-mariadb
+  type: ClusterIP
+  ports:
+    - port: 3306
+      targetPort: 3306
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: glpi
+  namespace: monitoring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: glpi
+  template:
+    metadata:
+      labels:
+        app: glpi
+    spec:
+      containers:
+        - name: glpi
+          image: diouxx/glpi:latest
+          env:
+            - name: MARIADB_HOST
+              value: "glpi-mariadb"
+            - name: MARIADB_DATABASE
+              value: "glpi"
+            - name: MARIADB_USER
+              value: "glpi"
+            - name: MARIADB_PASSWORD
+              value: "<your-db-password>"
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: glpi-data
+              mountPath: /var/www/html/glpi/files
+            - name: glpi-config
+              mountPath: /var/www/html/glpi/config
+            - name: apache-logs
+              mountPath: /var/log/apache2
+        - name: log-collector
+          image: busybox
+          command: ["/bin/sh", "-c"]
+          args:
+            - |
+              while [ ! -f /var/log/apache2/access-glpi.log ]; do sleep 1; done
+              tail -F /var/log/apache2/access-glpi.log /var/log/apache2/error-glpi.log /var/log/apache2/access.log /var/log/apache2/error.log 2>/dev/null
+          volumeMounts:
+            - name: apache-logs
+              mountPath: /var/log/apache2
+      volumes:
+        - name: glpi-data
+          persistentVolumeClaim:
+            claimName: glpi-data
+        - name: glpi-config
+          persistentVolumeClaim:
+            claimName: glpi-config
+        - name: apache-logs
+          emptyDir: {}
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: glpi-data
+  namespace: monitoring
+spec:
+  accessModes: ["ReadWriteOnce"]
+  storageClassName: longhorn-2replicas
+  resources:
+    requests:
+      storage: 5Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: glpi-config
+  namespace: monitoring
+spec:
+  accessModes: ["ReadWriteOnce"]
+  storageClassName: longhorn-2replicas
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: glpi
+  namespace: monitoring
+  annotations:
+    metallb.universe.tf/loadBalancerIPs: "192.168.0.157"
+spec:
+  selector:
+    app: glpi
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 80

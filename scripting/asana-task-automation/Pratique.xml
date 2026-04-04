@@ -1,0 +1,68 @@
+<PROJET Nom="?" Version="20250803.1245" Accès="Privé" Vue="Tableau" Description="Projet de pratique">
+   <SECTIONS>
+      <SECTION Nom="Pratico-Pratique">
+         <ACTIVITES>
+            <ACTIVITE>
+               <NOM>Activité PP1</NOM>
+               <DESCRIPTION>Activité pratico-pratique 1</DESCRIPTION>
+            </ACTIVITE>
+            <ACTIVITE>
+               <NOM>Activité PP2</NOM>
+               <DESCRIPTION>Activité pratico-pratique 1</DESCRIPTION>
+               <ACTIVITES>
+                  <ACTIVITE>
+                     <NOM>Sous-activité de PP2</NOM>
+                  </ACTIVITE>
+               </ACTIVITES>
+            </ACTIVITE>
+         </ACTIVITES>
+      </SECTION>
+      <SECTION Nom="?">
+         <ACTIVITES>
+            <ACTIVITE>
+               <NOM>Activité A</NOM>
+            </ACTIVITE>
+            <ACTIVITE>
+               <NOM>Activité B</NOM>
+               <DESCRIPTION>Ceci est l'activité B</DESCRIPTION>
+               <ACTIVITES>
+                  <ACTIVITE>
+                     <NOM>Activité B.1</NOM>
+                     <DESCRIPTION>Ceci est l'activité B.1</DESCRIPTION>
+                  </ACTIVITE>
+                  <ACTIVITE>
+                     <NOM>Activité B.2</NOM>
+                     <DESCRIPTION>Ceci est l'activité B.2</DESCRIPTION>
+                     <ACTIVITES>
+                        <ACTIVITE>
+                           <NOM>Activité B.2.1</NOM>
+                           <DESCRIPTION>Ceci est l'activité B.2.1</DESCRIPTION>
+                        </ACTIVITE>
+                        <ACTIVITE>
+                           <NOM>Activité B.2.2</NOM>
+                           <DESCRIPTION>Ceci est l'activité B.2.2</DESCRIPTION>
+                        </ACTIVITE>
+                        <ACTIVITE>
+                           <NOM>Activité B.2.3</NOM>
+                           <DESCRIPTION>Ceci est l'activité B.2.3</DESCRIPTION>
+                        </ACTIVITE>
+                        <ACTIVITE>
+                           <NOM>Activité B.2.4</NOM>
+                           <DESCRIPTION>Ceci est l'activité B.2.4</DESCRIPTION>
+                        </ACTIVITE>
+                     </ACTIVITES>
+                  </ACTIVITE>
+                  <ACTIVITE>
+                     <NOM>Activité B.3</NOM>
+                     <DESCRIPTION>Ceci est l'activité B.3</DESCRIPTION>
+                  </ACTIVITE>
+                </ACTIVITES>
+            </ACTIVITE>
+            <ACTIVITE>
+               <NOM>Activité C</NOM>
+               <DESCRIPTION>Ceci est l'activité C</DESCRIPTION>
+            </ACTIVITE>
+         </ACTIVITES>
+      </SECTION>
+   </SECTIONS>
+</PROJET>

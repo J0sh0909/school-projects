@@ -1,0 +1,510 @@
+defaultRules:
+  create: false
+
+prometheusOperator:
+  tls:
+    enabled: false
+  admissionWebhooks:
+    enabled: false
+
+prometheus:
+  service:
+    type: LoadBalancer
+    annotations:
+      metallb.universe.tf/loadBalancerIPs: "192.168.0.154"
+  prometheusSpec:
+    externalUrl: https://your-host.example.com/prometheus
+    routePrefix: /prometheus
+    replicas: 2
+    retention: 15d
+    resources:
+      requests:
+        cpu: 200m
+        memory: 512Mi
+      limits:
+        cpu: 1000m
+        memory: 2Gi
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: longhorn-2replicas
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 10Gi
+    affinity:
+      podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+            - key: app.kubernetes.io/name
+              operator: In
+              values:
+              - prometheus
+          topologyKey: kubernetes.io/hostname
+    additionalScrapeConfigs:
+      - job_name: prometheus-operator
+        scheme: http
+        static_configs:
+          - targets: ['prometheus-stack-kube-prom-operator.monitoring:8080']
+      - job_name: kube-state-metrics
+        static_configs:
+          - targets: ['prometheus-stack-kube-state-metrics.monitoring.svc.cluster.local:8080']
+      - job_name: kubernetes-apiservers  
+        static_configs:  
+          - targets:
+            - '192.168.0.201:6443'  
+            - '192.168.0.202:6443'  
+            - '192.168.0.203:6443'  
+        metrics_path: /metrics
+        scheme: https
+        tls_config:
+          ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+          insecure_skip_verify: true  
+        bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+      - job_name: pushgateway
+        honor_labels: true
+        static_configs:
+          - targets: ['pushgateway:9092']
+      - job_name: glpi-http
+        metrics_path: /probe
+        params:
+          module: [http_2xx]
+        static_configs:
+          - targets: ['192.168.0.157:80']
+        relabel_configs:
+          - source_labels: [__address__]
+            target_label: __param_target
+          - target_label: __address__
+            replacement: blackbox-prometheus-blackbox-exporter.monitoring.svc.cluster.local:9115
+
+grafana:
+  enabled: true
+  replicas: 1
+  deploymentStrategy:
+    type: Recreate
+  service:
+    type: LoadBalancer
+    annotations:
+      metallb.universe.tf/loadBalancerIPs: "192.168.0.152"
+  adminUser: admin
+  adminPassword: <your-grafana-password>
+  grafana.ini:
+    server:
+      root_url: https://your-host.example.com/grafana
+      serve_from_sub_path: true
+      domain: your-host.example.com
+      trusted_origins: your-host.example.com
+    csrf:
+      additional_headers_to_check: X-Forwarded-Host
+    security:
+        allow_embedding: true
+        cookie_secure: false
+        cookie_samesite: disabled
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      cpu: 500m
+      memory: 1Gi
+  persistence:
+    enabled: true
+    storageClassName: longhorn-2replicas
+    size: 10Gi
+  sidecar:
+    datasources:
+      isDefaultDatasource: true
+      alertmanager:
+        enabled: false
+  additionalDataSources:
+  - name: Loki
+    type: loki
+    access: proxy
+    url: http://loki:3100
+    isDefault: false
+    uid: P8E80F9AEF21F6940
+  - name: Alertmanager
+    type: alertmanager
+    access: proxy
+    url: http://prometheus-stack-kube-prom-alertmanager.monitoring:9093
+    isDefault: false
+    uid: alertmanager
+    jsonData:
+      handleGrafanaManagedAlerts: true
+      implementation: prometheus
+
+alertmanager:
+  enabled: true
+  service:
+    type: LoadBalancer
+    annotations:
+      metallb.universe.tf/loadBalancerIPs: "192.168.0.155"
+  alertmanagerSpec:
+    externalUrl: https://your-host.example.com/alertmanager
+    routePrefix: /alertmanager
+    replicas: 2
+    resources:
+      requests:
+        cpu: 50m
+        memory: 128Mi
+      limits:
+        cpu: 200m
+        memory: 512Mi
+    storage:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: longhorn-2replicas
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 5Gi
+    affinity:
+      podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+            - key: app.kubernetes.io/name
+              operator: In
+              values:
+              - alertmanager
+          topologyKey: kubernetes.io/hostname
+  config:
+    global:
+      smtp_smarthost: "smtp.gmail.com:587"
+      smtp_from: "you@example.com"
+      smtp_auth_username: "you@example.com"
+      smtp_auth_password: "<your-gmail-app-password>"
+      smtp_require_tls: true
+    inhibit_rules:
+      - source_matchers:
+          - severity="critical"
+        target_matchers:
+          - severity="warning"
+        equal:
+          - alertname
+    route:
+      group_by: ["alertname", "namespace"]
+      group_wait: 1m
+      group_interval: 10m
+      repeat_interval: 12h
+      receiver: email-alerts
+      routes:
+        - matchers:
+            - severity="critical"
+          receiver: email-alerts
+        - matchers:
+            - severity="warning"
+          receiver: email-alerts
+    receivers:
+      - name: email-alerts
+        email_configs:
+          - to: "you@example.com, teammate1@example.com"
+            send_resolved: true
+
+nodeExporter:
+  enabled: true
+
+kubeStateMetrics:
+  enabled: true
+
+additionalPrometheusRulesMap:
+  custom-alerts:
+    groups:
+      # ===================================================================
+      # MÉTRIQUES JOSUE MOLINA - correspond aux panneaux du dashboard
+      # Grafana "H74 - Josue Molina | Supervision Kubernetes"
+      # ===================================================================
+
+      - name: longhorn-volume
+        rules:
+          - alert: LonghornVolumeWarning
+            expr: (longhorn_volume_actual_size_bytes / longhorn_volume_capacity_bytes) * 100 > 70
+            for: 2m
+            labels:
+              severity: warning
+            annotations:
+              summary: "Volume Longhorn {{ $labels.volume }} a plus de 70% d'utilisation"
+              description: "Le volume {{ $labels.volume }} est a {{ $value | printf \"%.1f\" }}% de capacite"
+          - alert: LonghornVolumeCritical
+            expr: (longhorn_volume_actual_size_bytes / longhorn_volume_capacity_bytes) * 100 > 85
+            for: 2m
+            labels:
+              severity: critical
+            annotations:
+              summary: "Volume Longhorn {{ $labels.volume }} a plus de 85% d'utilisation"
+              description: "Le volume {{ $labels.volume }} est a {{ $value | printf \"%.1f\" }}% de capacite"
+
+      - name: cpu-per-pod
+        rules:
+          - alert: PodCPUWarning
+            expr: sum by (pod) (rate(container_cpu_usage_seconds_total{container!="", container!="POD", namespace="monitoring"}[5m])) / sum by (pod) (kube_pod_container_resource_limits{resource="cpu", namespace="monitoring"}) * 100 > 70
+            for: 2m
+            labels:
+              severity: warning
+            annotations:
+              summary: "Pod {{ $labels.pod }} utilise plus de 70% de sa limite CPU"
+              description: "Le pod {{ $labels.pod }} est a {{ $value | printf \"%.1f\" }}% de sa limite CPU"
+          - alert: PodCPUCritical
+            expr: sum by (pod) (rate(container_cpu_usage_seconds_total{container!="", container!="POD", namespace="monitoring"}[5m])) / sum by (pod) (kube_pod_container_resource_limits{resource="cpu", namespace="monitoring"}) * 100 > 85
+            for: 2m
+            labels:
+              severity: critical
+            annotations:
+              summary: "Pod {{ $labels.pod }} utilise plus de 85% de sa limite CPU"
+              description: "Le pod {{ $labels.pod }} est a {{ $value | printf \"%.1f\" }}% de sa limite CPU"
+
+      - name: ram-per-pod
+        rules:
+          - alert: PodRAMWarning
+            expr: sum by (pod) (container_memory_working_set_bytes{container!="", container!="POD", namespace="monitoring"}) / sum by (pod) (kube_pod_container_resource_limits{resource="memory", namespace="monitoring"}) * 100 > 70
+            for: 2m
+            labels:
+              severity: warning
+            annotations:
+              summary: "Pod {{ $labels.pod }} utilise plus de 70% de sa limite RAM"
+              description: "Le pod {{ $labels.pod }} est a {{ $value | printf \"%.1f\" }}% de sa limite RAM"
+          - alert: PodRAMCritical
+            expr: sum by (pod) (container_memory_working_set_bytes{container!="", container!="POD", namespace="monitoring"}) / sum by (pod) (kube_pod_container_resource_limits{resource="memory", namespace="monitoring"}) * 100 > 85
+            for: 2m
+            labels:
+              severity: critical
+            annotations:
+              summary: "Pod {{ $labels.pod }} utilise plus de 85% de sa limite RAM"
+              description: "Le pod {{ $labels.pod }} est a {{ $value | printf \"%.1f\" }}% de sa limite RAM"
+
+      - name: cpu-per-node
+        rules:
+          - alert: NodeCPUWarning
+            expr: avg without(cpu, mode, endpoint, service, container, pod, namespace) ((1 - avg by (instance) (rate(node_cpu_seconds_total{mode="idle"}[5m]))) * 100) > 75
+            for: 2m
+            labels:
+              severity: warning
+            annotations:
+              summary: "Noeud {{ $labels.instance }} utilise plus de 75% de CPU"
+              description: "Le noeud {{ $labels.instance }} est a {{ $value | printf \"%.1f\" }}% d'utilisation CPU"
+          - alert: NodeCPUCritical
+            expr: avg without(cpu, mode, endpoint, service, container, pod, namespace) ((1 - avg by (instance) (rate(node_cpu_seconds_total{mode="idle"}[5m]))) * 100) > 90
+            for: 2m
+            labels:
+              severity: critical
+            annotations:
+              summary: "Noeud {{ $labels.instance }} utilise plus de 90% de CPU"
+              description: "Le noeud {{ $labels.instance }} est a {{ $value | printf \"%.1f\" }}% d'utilisation CPU"
+
+      - name: mariadb
+        rules:
+          - alert: MariaDBDown
+            expr: mysql_up == 0
+            for: 30s
+            labels:
+              severity: critical
+            annotations:
+              summary: "Base de donnees MariaDB inaccessible"
+              description: "La base de donnees MariaDB de GLPI est hors ligne depuis plus de 30 secondes"
+
+      - name: ram-per-node
+        rules:
+          - alert: NodeRAMWarning
+            expr: avg without(cpu, mode, endpoint, service, container, pod, namespace) ((1 - node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes) * 100) > 70
+            for: 2m
+            labels:
+              severity: warning
+            annotations:
+              summary: "Noeud {{ $labels.instance }} utilise plus de 70% de RAM"
+              description: "Le noeud {{ $labels.instance }} est a {{ $value | printf \"%.1f\" }}% d'utilisation RAM"
+          - alert: NodeRAMCritical
+            expr: avg without(cpu, mode, endpoint, service, container, pod, namespace) ((1 - node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes) * 100) > 85
+            for: 2m
+            labels:
+              severity: critical
+            annotations:
+              summary: "Noeud {{ $labels.instance }} utilise plus de 85% de RAM"
+              description: "Le noeud {{ $labels.instance }} est a {{ $value | printf \"%.1f\" }}% d'utilisation RAM"
+
+      # ===================================================================
+      # MÉTRIQUES TEAMMATES
+      # ===================================================================
+
+      - name: api-error-rate
+        rules:
+          - alert: APIErrorRateWarning
+            expr: sum(rate(apiserver_request_total{code=~"[45].."}[5m])) / sum(rate(apiserver_request_total[5m])) * 100 > 5
+            for: 2m
+            labels:
+              severity: warning
+            annotations:
+              summary: "Taux d'erreurs API Kubernetes >5% ({{ $value | printf \"%.1f\" }} %)"
+              description: "Le taux d'erreurs sur les requêtes API est élevé. Intervention préventive requise."
+          - alert: APIErrorRateCritical
+            expr: sum(rate(apiserver_request_total{code=~"[45].."}[5m])) / sum(rate(apiserver_request_total[5m])) * 100 > 10
+            for: 2m
+            labels:
+              severity: critical
+            annotations:
+              summary: "Taux d'erreurs API Kubernetes >10% ({{ $value | printf \"%.1f\" }} %)"
+              description: "Le taux d'erreurs sur les requêtes API est critique. Diagnostic urgent requis."
+
+      - name: node-availability
+        rules:
+          - alert: NodeNotReadyWarning
+            expr: count by (node) (kube_node_status_condition{condition="Ready", status="true"} == 1) / count by (node) (kube_node_info) < 1
+            for: 2m
+            labels:
+              severity: warning
+            annotations:
+              summary: "Au moins un nœud Kubernetes NotReady ({{ $labels.node }})"
+              description: "Disponibilité cluster <100 %. Intervention préventive requise."
+          - alert: MultipleNodesNotReadyCritical
+            expr: sum(kube_node_status_condition{condition="Ready", status="false"}) > 1
+            for: 2m
+            labels:
+              severity: critical
+            annotations:
+              summary: "Plusieurs nœuds Kubernetes NotReady ({{ $value | printf \"%.0f\" }})"
+              description: "Impact sur HA du cluster. Diagnostic urgent requis."
+
+      - name: glpi-response-time
+        rules:
+          - alert: GLPIResponseTimeWarning
+            expr: avg(probe_duration_seconds{job="glpi-http"}) > 0.5
+            for: 2m
+            labels:
+              severity: warning
+            annotations:
+              summary: "Temps de réponse GLPI >0.5s ({{ $value | printf \"%.1f\" }} s)"
+              description: "Ralentissement GLPI détecté. Intervention préventive requise."
+          - alert: GLPIResponseTimeCritical
+            expr: avg(probe_duration_seconds{job="glpi-http"}) > 2
+            for: 2m
+            labels:
+              severity: critical
+            annotations:
+              summary: "Temps de réponse GLPI >2s ({{ $value | printf \"%.1f\" }} s)"
+              description: "Ralentissement critique GLPI. Diagnostic urgent requis."
+
+      - name: node-storage
+        rules:
+          - alert: NodeStorageWarning
+            expr: 100 * (node_filesystem_avail_bytes{mountpoint="/", fstype!="tmpfs"} / node_filesystem_size_bytes{mountpoint="/", fstype!="tmpfs"}) < 20
+            for: 2m
+            labels:
+              severity: warning
+            annotations:
+              summary: "Stockage disponible sur nœud {{ $labels.instance }} <20% ({{ $value | printf \"%.1f\" }} %)"
+              description: "Risque de saturation disque. Intervention préventive requise."
+          - alert: NodeStorageCritical
+            expr: 100 * (node_filesystem_avail_bytes{mountpoint="/", fstype!="tmpfs"} / node_filesystem_size_bytes{mountpoint="/", fstype!="tmpfs"}) < 10
+            for: 2m
+            labels:
+              severity: critical
+            annotations:
+              summary: "Stockage disponible sur nœud {{ $labels.instance }} <10% ({{ $value | printf \"%.1f\" }} %)"
+              description: "Saturation disque critique. Diagnostic urgent requis."
+
+      - name: glpi-availability
+        rules:
+          - alert: GLPIAvailabilityCritical
+            expr: avg(probe_success{job="glpi-http"}) < 0.9
+            for: 30s
+            labels:
+              severity: critical
+            annotations:
+              summary: "Disponibilité GLPI <90% ({{ $value | printf \"%.1f\" }} %)"
+              description: "Indisponibilité GLPI critique. Diagnostic urgent requis."
+
+      - name: teammate1-glpi-inventaire
+        rules:
+          - alert: Teammate1GLPIEquipementsNonInventories
+            expr: glpi_inventory_outdated_computers > 0
+            for: 1m
+            labels:
+              severity: warning
+              membre: teammates
+              metrique: equipements_non_inventories
+            annotations:
+              summary: "[Teammates] Équipements GLPI non inventoriés détectés"
+              description: "{{ $value }} équipement(s) n'ont pas été inventoriés depuis 7 jours"
+          
+          - alert: Teammate1GLPIEquipementsNonInventoriesCritical
+            expr: glpi_inventory_outdated_computers > 2
+            for: 1m
+            labels:
+              severity: critical
+              membre: teammates
+              metrique: equipements_non_inventories
+            annotations:
+              summary: "[Teammates] CRITIQUE: Nombreux équipements GLPI non inventoriés"
+              description: "{{ $value }} équipement(s) non inventoriés - seuil critique atteint"
+      
+      - name: teammate1-mariadb-connexions
+        rules:
+          - alert: Teammate1MariaDBConnectionsWarning
+            expr: mysql_global_status_threads_connected > 2
+            for: 1m
+            labels:
+              severity: warning
+              membre: teammates
+              metrique: connexions_mariadb
+            annotations:
+              summary: "[Teammates] Connexions MariaDB élevées"
+              description: "{{ $value }} connexion(s) active(s) - seuil test warning (2)"
+          
+          - alert: Teammate1MariaDBConnectionsCritical
+            expr: mysql_global_status_threads_connected > 5
+            for: 1m
+            labels:
+              severity: critical
+              membre: teammates
+              metrique: connexions_mariadb
+            annotations:
+              summary: "[Teammates] CRITIQUE: Connexions MariaDB très élevées"
+              description: "{{ $value }} connexion(s) active(s) - seuil test critical (5)"
+      
+      - name: teammate1-services-kubernetes
+        rules:
+          - alert: Teammate1ServicesKubernetesWarning
+            expr: count(count by (service) (kube_service_info{namespace="monitoring"})) < 18
+            for: 1m
+            labels:
+              severity: warning
+              membre: teammates
+              metrique: services_kubernetes
+            annotations:
+              summary: "[Teammates] Services Kubernetes manquants détectés"
+              description: "{{ $value }} services actifs (attendu: 19) - un ou plusieurs services sont down"
+          
+          - alert: Teammate1ServicesKubernetesCritical
+            expr: count(count by (service) (kube_service_info{namespace="monitoring"})) < 15
+            for: 1m
+            labels:
+              severity: critical
+              membre: teammates
+              metrique: services_kubernetes
+            annotations:
+              summary: "[Teammates] CRITIQUE: Plusieurs services Kubernetes manquants"
+              description: "{{ $value }} services actifs (attendu: 19) - infrastructure dégradée"
+      
+      - name: teammate1-pods-pending
+        rules:
+          - alert: Teammate1PodsPending
+            expr: count(kube_pod_status_phase{phase="Pending"} == 1) > 0
+            for: 1m
+            labels:
+              severity: warning
+              membre: teammates
+              metrique: pods_pending
+            annotations:
+              summary: "[Teammates] Pod(s) en attente de planification"
+              description: "{{ $value }} pod(s) ne peuvent pas être schedulés"
+          
+          - alert: Teammate1PodsPendingCritical
+            expr: count(kube_pod_status_phase{phase="Pending"} == 1) >= 2
+            for: 1m
+            labels:
+              severity: critical
+              membre: teammates
+              metrique: pods_pending
+            annotations:
+              summary: "[Teammates] CRITIQUE: Plusieurs pods en attente"
+              description: "{{ $value }} pods bloqués en Pending - manque de ressources probable"

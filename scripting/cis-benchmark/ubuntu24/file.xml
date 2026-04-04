@@ -1,0 +1,183 @@
+<Configuration>
+
+    <Parameter>
+        <Code>2.2.4</Code>
+        <Title>Ensure telnet client is not installed</Title>
+        <ValueType>Enum</ValueType>
+        <Expected operator="AND">
+            <Value>not-installed</Value>
+        </Expected>
+    </Parameter>
+
+    <Parameter>
+        <Code>2.2.6</Code>
+        <Title>Ensure ftp client is not installed</Title>
+        <ValueType>Enum</ValueType>
+        <Expected operator="AND">
+            <Value>not-installed</Value>
+        </Expected>
+    </Parameter>
+
+    <Parameter>
+        <Code>3.3.1</Code>
+        <Title>Ensure ip forwarding is disabled</Title>
+        <ValueType>Enum</ValueType>
+        <Expected operator="AND">
+            <Value>0</Value>
+        </Expected>
+    </Parameter>
+
+    <Parameter>
+        <Code>4.1.1</Code>
+        <Title>Ensure a single firewall configuration utility is in use</Title>
+        <ValueType>Pattern</ValueType>
+        <Expected operator="OR">
+            <Value>ufw:active</Value>
+            <Value>ufw:enabled</Value>
+            <Value>firewalld:active</Value>
+            <Value>firewalld:enabled</Value>
+        </Expected>
+    </Parameter>
+
+    <Parameter>
+        <Code>4.2.1</Code>
+        <Title>Ensure ufw is installed</Title>
+        <ValueType>Enum</ValueType>
+        <Expected operator="AND">
+            <Value>installed</Value>
+        </Expected>
+    </Parameter>
+
+    <Parameter>
+        <Code>4.2.3</Code>
+        <Title>Ensure ufw service is enabled</Title>
+        <ValueType>Enum</ValueType>
+        <Expected operator="AND">
+            <Value>enabled</Value>
+        </Expected>
+    </Parameter>
+
+    <Parameter>
+        <Code>5.4.1.1</Code>
+        <Title>Ensure password expiration is configured</Title>
+        <ValueType>Range</ValueType>
+        <Expected operator="AND">
+            <Start>1</Start>
+            <End>365</End>
+        </Expected>
+    </Parameter>
+
+    <Parameter>
+        <Code>5.4.1.3</Code>
+        <Title>Ensure password expiration warning days is configured</Title>
+        <ValueType>Minimum</ValueType>
+        <Expected operator="AND">
+            <Minimum>7</Minimum>
+        </Expected>
+    </Parameter>
+
+    <Parameter>
+        <Code>5.4.1.4</Code>
+        <Title>Ensure strong password hashing algorithm is configured</Title>
+        <ValueType>Enum</ValueType>
+        <Expected operator="OR">
+            <Value>yescrypt</Value>
+            <Value>sha512</Value>
+        </Expected>
+    </Parameter>
+
+    <Parameter>
+        <Code>5.4.1.5</Code>
+        <Title>Ensure inactive password lock is configured</Title>
+        <ValueType>Enum</ValueType>
+        <Expected operator="AND">
+            <Value>configured</Value>
+        </Expected>
+    </Parameter>
+
+    <Parameter>
+        <Code>5.4.1.6</Code>
+        <Title>Ensure all users last password change date is in the past</Title>
+        <ValueType>Enum</ValueType>
+        <Expected operator="AND">
+            <Value>all-valid</Value>
+        </Expected>
+    </Parameter>
+
+    <Parameter>
+        <Code>5.4.2.1</Code>
+        <Title>Ensure root is the only UID 0 account</Title>
+        <ValueType>Enum</ValueType>
+        <Expected operator="AND">
+            <Value>root</Value>
+        </Expected>
+    </Parameter>
+
+    <Parameter>
+        <Code>5.4.2.2</Code>
+        <Title>Ensure root is the only GID 0 account</Title>
+        <ValueType>Enum</ValueType>
+        <Expected operator="AND">
+            <Value>root</Value>
+        </Expected>
+    </Parameter>
+
+    <Parameter>
+        <Code>5.4.2.4</Code>
+        <Title>Ensure root account access is controlled</Title>
+        <ValueType>Enum</ValueType>
+        <Expected operator="OR">
+            <Value>L</Value>
+            <Value>LK</Value>
+        </Expected>
+    </Parameter>
+
+    <Parameter>
+        <Code>5.4.2.7</Code>
+        <Title>Ensure system accounts do not have a valid login shell</Title>
+        <ValueType>Enum</ValueType>
+        <Expected operator="AND">
+            <Value>none</Value>
+        </Expected>
+    </Parameter>
+
+    <Parameter>
+        <Code>5.4.3.2</Code>
+        <Title>Ensure default user shell timeout is configured</Title>
+        <ValueType>Minimum</ValueType>
+        <Expected operator="AND">
+            <Minimum>300</Minimum>
+        </Expected>
+    </Parameter>
+
+    <Parameter>
+        <Code>6.1.1.1</Code>
+        <Title>Ensure journald service is enabled and active</Title>
+        <ValueType>Multi</ValueType>
+        <Expected operator="AND">
+            <Value>enabled</Value>
+            <Value>static</Value>
+            <Value>active</Value>
+        </Expected>
+    </Parameter>
+
+    <Parameter>
+        <Code>6.1.1.4</Code>
+        <Title>Ensure only one logging system is in use</Title>
+        <ValueType>Enum</ValueType>
+        <Expected operator="AND">
+            <Value>journald</Value>
+        </Expected>
+    </Parameter>
+
+    <Parameter>
+        <Code>7.1.1</Code>
+        <Title>Ensure permissions on /etc/passwd are configured</Title>
+        <ValueType>Enum</ValueType>
+        <Expected operator="OR">
+            <Value>644</Value>
+            <Value>600</Value>
+        </Expected>
+    </Parameter>
+
+</Configuration>

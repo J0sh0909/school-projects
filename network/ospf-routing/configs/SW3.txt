@@ -1,0 +1,14 @@
+enable
+conf t
+
+hostname SW3
+
+int G0/1
+desc vers-R1
+no shut
+
+int f1/1
+desc vers-serveur-dhcp
+no shut
+
+do copy run start

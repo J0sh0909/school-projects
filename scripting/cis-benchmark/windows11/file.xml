@@ -1,0 +1,189 @@
+<Configuration>
+
+    <Parameter>
+        <Code>1.1.1</Code>
+        <Title>Enforce password history</Title>
+        <ValueType>Minimum</ValueType>
+        <Expected operator="AND">
+            <Minimum>24</Minimum>
+        </Expected>
+    </Parameter>
+
+    <Parameter>
+        <Code>1.1.2</Code>
+        <Title>Maximum password age</Title>
+        <ValueType>Range</ValueType>
+        <Expected operator="AND">
+            <Start>1</Start>
+            <End>365</End>
+        </Expected>
+    </Parameter>
+
+    <Parameter>
+        <Code>1.1.3</Code>
+        <Title>Minimum password age</Title>
+        <ValueType>Minimum</ValueType>
+        <Expected operator="AND">
+            <Minimum>1</Minimum>
+        </Expected>
+    </Parameter>
+
+    <Parameter>
+        <Code>1.1.4</Code>
+        <Title>Minimum password length</Title>
+        <ValueType>Minimum</ValueType>
+        <Expected operator="AND">
+            <Minimum>14</Minimum>
+        </Expected>
+    </Parameter>
+
+    <Parameter>
+        <Code>1.1.5</Code>
+        <Title>Password must meet complexity requirements</Title>
+        <ValueType>Enum</ValueType>
+        <Expected operator="AND">
+            <Value>Enabled</Value>
+        </Expected>
+    </Parameter>
+
+    <Parameter>
+        <Code>1.1.6</Code>
+        <Title>Relax minimum password length limits</Title>
+        <ValueType>Enum</ValueType>
+        <Expected operator="AND">
+            <Value>Enabled</Value>
+        </Expected>
+    </Parameter>
+
+    <Parameter>
+        <Code>1.1.7</Code>
+        <Title>Store passwords using reversible encryption</Title>
+        <ValueType>Enum</ValueType>
+        <Expected operator="AND">
+            <Value>Disabled</Value>
+        </Expected>
+    </Parameter>
+
+    <Parameter>
+        <Code>1.2.1</Code>
+        <Title>Account lockout duration</Title>
+        <ValueType>Minimum</ValueType>
+        <Expected operator="AND">
+            <Minimum>15</Minimum>
+        </Expected>
+    </Parameter>
+
+    <Parameter>
+        <Code>1.2.2</Code>
+        <Title>Account lockout threshold</Title>
+        <ValueType>Range</ValueType>
+        <Expected operator="AND">
+            <Start>1</Start>
+            <End>5</End>
+        </Expected>
+    </Parameter>
+
+    <Parameter>
+        <Code>1.2.4</Code>
+        <Title>Reset account lockout counter after</Title>
+        <ValueType>Minimum</ValueType>
+        <Expected operator="AND">
+            <Minimum>15</Minimum>
+        </Expected>
+    </Parameter>
+
+    <Parameter>
+        <Code>2.3.1.1</Code>
+        <Title>Accounts: Guest account status</Title>
+        <ValueType>Enum</ValueType>
+        <Expected operator="AND">
+            <Value>Disabled</Value>
+        </Expected>
+    </Parameter>
+
+    <Parameter>
+        <Code>2.3.1.2</Code>
+        <Title>Limit blank passwords to console logon only</Title>
+        <ValueType>Enum</ValueType>
+        <Expected operator="AND">
+            <Value>Enabled</Value>
+        </Expected>
+    </Parameter>
+
+    <Parameter>
+        <Code>5.11</Code>
+        <Title>Microsoft FTP Service (FTPSVC)</Title>
+        <ValueType>Multi</ValueType>
+        <Expected operator="OR">
+            <Value>Disabled</Value>
+            <Value>NotInstalled</Value>
+        </Expected>
+    </Parameter>
+
+    <Parameter>
+        <Code>9.1.1</Code>
+        <Title>Windows Firewall: Domain: Firewall state</Title>
+        <ValueType>Enum</ValueType>
+        <Expected operator="AND">
+            <Value>On</Value>
+        </Expected>
+    </Parameter>
+
+    <Parameter>
+        <Code>9.2.1</Code>
+        <Title>Windows Firewall: Private: Firewall state</Title>
+        <ValueType>Enum</ValueType>
+        <Expected operator="AND">
+            <Value>On</Value>
+        </Expected>
+    </Parameter>
+
+    <Parameter>
+        <Code>9.3.1</Code>
+        <Title>Windows Firewall: Public: Firewall state</Title>
+        <ValueType>Enum</ValueType>
+        <Expected operator="AND">
+            <Value>On</Value>
+        </Expected>
+    </Parameter>
+
+    <Parameter>
+        <Code>17.1.1</Code>
+        <Title>Audit Credential Validation</Title>
+        <ValueType>Multi</ValueType>
+        <Expected operator="AND">
+            <Value>Success</Value>
+            <Value>Failure</Value>
+        </Expected>
+    </Parameter>
+
+    <Parameter>
+        <Code>17.2.3</Code>
+        <Title>Audit User Account Management</Title>
+        <ValueType>Multi</ValueType>
+        <Expected operator="AND">
+            <Value>Success</Value>
+            <Value>Failure</Value>
+        </Expected>
+    </Parameter>
+
+    <Parameter>
+        <Code>17.5.1</Code>
+        <Title>Audit Account Lockout</Title>
+        <ValueType>Enum</ValueType>
+        <Expected operator="AND">
+            <Value>Failure</Value>
+        </Expected>
+    </Parameter>
+
+    <Parameter>
+        <Code>17.5.4</Code>
+        <Title>Audit Logon</Title>
+        <ValueType>Multi</ValueType>
+        <Expected operator="AND">
+            <Value>Success</Value>
+            <Value>Failure</Value>
+        </Expected>
+    </Parameter>
+
+</Configuration>

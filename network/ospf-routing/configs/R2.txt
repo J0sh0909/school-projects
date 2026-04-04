@@ -1,0 +1,49 @@
+enable
+conf t
+
+
+hostname R2
+
+int f0/0
+desc vers-R4
+no shut
+ip add 172.17.255.17 255.255.255.252 
+ip ospf hello-interval 4
+ip ospf dead-interval 16
+bandwidth 100
+ip ospf 1 area 1
+
+int f1/0
+desc vers-R3
+no shut
+ip add 172.18.255.21 255.255.255.252
+ip ospf hello-interval 4
+ip ospf dead-interval 16
+bandwidth 100
+ip ospf 1 area 1
+
+int f2/0
+desc vers-zone-0
+no shut
+ip add 192.168.255.2 255.255.255.240
+ip ospf hello-interval 4
+ip ospf dead-interval 16
+bandwidth 100
+ip ospf priority 10
+ip ospf 1 area 1
+
+int g3/0
+desc vers-R1
+no shut
+ip add 172.18.255.6 255.255.255.252
+ip ospf hello-interval 4
+ip ospf dead-interval 16
+bandwidth 1000
+ip ospf 1 area 1
+
+router ospf 1
+router-id 10.10.10.5
+auto-cost reference-bandwidth 10000
+network 192.168.255.0 0.0.0.15 area 0
+
+do copy run start

@@ -1,0 +1,60 @@
+mysql:
+  host: glpi-mariadb.monitoring
+  port: 3306
+  user: glpi
+  pass: <your-db-password>
+  db: glpi
+  protocol: tcp
+
+serviceMonitor:
+  enabled: true
+  namespace: monitoring
+  labels:
+    release: prometheus-stack
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 100m
+    memory: 128Mi
+
+customQueries:
+  - name: glpi_failed_logins
+    query: >
+      SELECT COUNT(*) as failed_logins 
+      FROM glpi_logs 
+      WHERE itemtype = 'Auth' 
+        AND action LIKE '%login_failed%' 
+        AND date_mod > NOW() - INTERVAL 5 MINUTE
+    metrics:
+      - failed_logins:
+          usage: "GAUGE"
+          description: "Nombre de tentatives de login échouées dans GLPI sur les 5 dernières minutes"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,25 @@
+gitlabUrl: "https://git.example.com/"
+runnerToken: "<your-gitlab-runner-token>"
+namespace: monitoring
+serviceAccount:
+  create: false
+  name: gitlab-runner
+rbac:
+  create: false
+runners:
+  config: |
+    [[runners]]
+      [runners.kubernetes]
+        namespace = "monitoring"
+        service_account = "gitlab-runner"
+        image = "alpine/helm:latest"
+        pod_termination_grace_period_seconds = 0
+        [runners.kubernetes.pod_annotations]
+          "ttl.kubernetes.io/cleanup" = "true"
+resources:
+  requests:
+    cpu: 50m
+    memory: 128Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi

@@ -1,0 +1,58 @@
+stages:
+  - validate
+  - deploy
+
+validate-prometheus:
+  stage: validate
+  image: dtzar/helm-kubectl:latest
+  tags:
+    - k3s-prometheus-modification
+  script:
+    - helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+    - helm repo update
+    - helm pull prometheus-community/kube-prometheus-stack --untar --untardir /tmp/charts
+    - helm lint /tmp/charts/kube-prometheus-stack -f stack/prometheus-stack-values.yaml || (echo ERREUR Configuration invalide deploiement annule && exit 1)
+  only:
+    changes:
+      - stack/prometheus-stack-values.yaml
+
+deploy-prometheus:
+  stage: deploy
+  image: dtzar/helm-kubectl:latest
+  tags:
+    - k3s-prometheus-modification
+  script:
+    - helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+    - helm repo update
+    - helm upgrade prometheus-stack prometheus-community/kube-prometheus-stack -n monitoring -f stack/prometheus-stack-values.yaml --reuse-values
+    - sh stack/loki-patch.sh
+  only:
+    changes:
+      - stack/prometheus-stack-values.yaml
+
+validate-mariadb-exporter:
+  stage: validate
+  image: dtzar/helm-kubectl:latest
+  tags:
+    - k3s-prometheus-modification
+  script:
+    - helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+    - helm repo update
+    - helm pull prometheus-community/prometheus-mysql-exporter --untar --untardir /tmp/charts
+    - helm lint /tmp/charts/prometheus-mysql-exporter -f stack/mariadb-exporter-values.yaml || (echo ERREUR Configuration invalide deploiement annule && exit 1)
+  only:
+    changes:
+      - stack/mariadb-exporter-values.yaml
+
+deploy-mariadb-exporter:
+  stage: deploy
+  image: dtzar/helm-kubectl:latest
+  tags:
+    - k3s-prometheus-modification
+  script:
+    - helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+    - helm repo update
+    - helm upgrade --install mariadb-exporter prometheus-community/prometheus-mysql-exporter -n monitoring -f stack/mariadb-exporter-values.yaml
+  only:
+    changes:
+      - stack/mariadb-exporter-values.yaml

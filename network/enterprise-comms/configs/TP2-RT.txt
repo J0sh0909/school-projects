@@ -1,0 +1,29 @@
+ena
+conf t
+hostname RT-H33
+Banner motd #Access Interdit#  
+
+int g0/1 
+desc vers SW3
+ip add 172.30.0.1 255.255.255.0 
+ip nat inside
+no shut 
+
+int g0/2 
+desc vers Internet (E305)
+ip add DHCP
+ip nat outside
+no shut 
+ 
+access-list 1 permit any
+
+ip nat inside source list 1 interface g0/2 overload
+ip route 0.0.0.0 0.0.0.0 G0/2
+ip route 172.16.0.0 255.255.224.0 172.30.0.2
+ip route 172.16.96.0 255.255.224.0 172.30.0.2
+ip route 172.16.128.0 255.255.224.0 172.30.0.2
+ip route 172.16.160.0 255.255.224.0 172.30.0.2
+ip route 172.16.192.0 255.255.224.0 172.30.0.2
+ip route 172.16.64.0 255.255.224.0 172.30.0.2
+ip route 172.16.32.0 255.255.224.0 172.30.0.2
+ip route 172.16.224.0 255.255.224.0 172.30.0.2
