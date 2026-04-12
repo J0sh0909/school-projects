@@ -1,6 +1,6 @@
 > **[Francais](#francais)** | **[English](#english)**
 
-## Francais
+## Français
 
 > **Projet d'équipe (3 membres)**
 

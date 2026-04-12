@@ -9,7 +9,7 @@
 
 ## Français
 
-Portfolio de projets réalisés dans le cadre du programme **Virtualisation, sécurité et réseautique** au Cégep de Rosemont. Chaque dossier contient un README détaillé avec l'architecture, les choix techniques et ma contribution personnelle.
+Portfolio de projets réalisés dans le cadre du programme **420.B1, Réseautique: sécurité et virtualisation** au Cégep de Rosemont. Chaque dossier contient un README détaillé avec l'architecture, les choix techniques et ma contribution personnelle.
 
 ### Projets
 
@@ -34,7 +34,7 @@ Portfolio de projets réalisés dans le cadre du programme **Virtualisation, sé
 
 ## English
 
-Portfolio of projects completed in the **Virtualization, Security and Networking** program at Cégep de Rosemont. Each folder contains a detailed README with architecture, technical choices, and my personal contributions.
+Portfolio of projects completed in the **420.B1, Réseautique: sécurité et virtualisation** program at Cégep de Rosemont. Each folder contains a detailed README with architecture, technical choices, and my personal contributions.
 
 ### Projects
 

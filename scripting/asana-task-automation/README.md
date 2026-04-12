@@ -1,6 +1,6 @@
 > **[Francais](#francais)** | **[English](#english)**
 
-## Francais
+## Français
 
 > **Projet solo**
 
@@ -94,7 +94,7 @@ The XML schema mirrors the Asana hierarchy: `PROJETS > PROJET > SECTIONS > SECTI
 
 The script processes a file in three phases:
 
-1. **Parse and normalize** - Reads the XML, uppercases all tags and attribute names, capitalises `NOM` values, and prompts for any attribute set to `?`
+1. **Parse and normalize** - Reads the XML, uppercases all tags and attribute names, capitalizes `NOM` values, and prompts for any attribute set to `?`
 2. **Validate** - Walks the DOM against the schema, marking invalid nodes (unknown tags, missing required attributes, duplicate names, depth exceeded) to skip without halting
 3. **Create** - Authenticates with a PAT, selects the workspace, then creates each object in order. Projects and sections are checked for existence before creation to avoid duplicates. Top-level tasks are created with `memberships` to place them directly into the correct section. Subtasks are attached via the Asana subtask endpoint recursively.
 

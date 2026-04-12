@@ -1,6 +1,6 @@
 > **[Francais](#francais)** | **[English](#english)**
 
-## Francais
+## Français
 
 > **Projet d'équipe (2 membres)**
 
@@ -183,7 +183,7 @@ Router link between RT-H33 and SW3-H33: 172.30.0.0/24. NAT overload on the route
 |---|---|---|---|---|
 | Direction | 4 | 1001-1004 | Direction | Manual |
 | Ventes | 2 | 3001-3002 | Ventes | Hunt 3001 to 3002 |
-| Service a la clientele | 3 | 2001-2003 | Service a la clientele | Memory hunt 2001 to 2002 to 2003 |
+| Service è la clientèle | 3 | 2001-2003 | Service è la clientèle | Memory hunt 2001 to 2002 to 2003 |
 | Production | 2 | 5001-5002 | Production | Manual |
 | Finances | 2 | 4001-4002 | Finances | Manual |
 

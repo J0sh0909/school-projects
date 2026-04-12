@@ -1,6 +1,6 @@
 > **[Francais](#francais)** | **[English](#english)**
 
-## Francais
+## Français
 
 > **Projet d'équipe (4 membres)** - voir le README pour les détails de contribution
 
