@@ -6,6 +6,11 @@
 
 # Scripts de conformité CIS Benchmark
 
+![Architecture Diagram](./architecture-cis.svg)
+
+---
+
+
 Deux scripts qui auditent et corrigent les paramètres système pour la conformité CIS Benchmark - l'un pour Ubuntu 24.04 (Bash) et l'autre pour Windows 11 (PowerShell). Les deux utilisent un fichier XML comme source de vérité unique pour les valeurs attendues et supportent deux modes : validation (audit seul) et correction (remédiation automatique).
 
 > **Cours :** Administration système / Durcissement de sécurité
@@ -95,6 +100,11 @@ Bash, PowerShell, xmlstarlet (Ubuntu), System.Xml.XmlDocument (Windows), secedit
 > **Solo project**
 
 # CIS Benchmark Scripts
+
+![Architecture Diagram](./architecture-cis.svg)
+
+---
+
 
 Two scripts that audit and remediate system settings for CIS Benchmark compliance - one for Ubuntu 24.04 (Bash) and one for Windows 11 (PowerShell). Both use an XML file as the single source of truth for expected values and support two modes: validation (audit only) and correction (auto-remediate).
 

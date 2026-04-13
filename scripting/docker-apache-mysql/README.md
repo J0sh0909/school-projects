@@ -6,6 +6,11 @@
 
 # Docker - Apache HTTPS auto-signé + MySQL
 
+![Architecture Diagram](./architecture-docker.svg)
+
+---
+
+
 Déploiement Docker Compose d'un serveur web Apache avec certificats TLS auto-signés et un backend MySQL. Les deux services utilisent des volumes persistants pour que les données survivent aux redémarrages et reconstructions des conteneurs.
 
 > **Cours :** Docker / Conteneurisation
@@ -83,6 +88,11 @@ Docker, Docker Compose, Apache (httpd), MySQL, OpenSSL (certificats auto-signés
 > **Solo project**
 
 # Docker - Self-Signed HTTPS Apache + MySQL
+
+![Architecture Diagram](./architecture-docker.svg)
+
+---
+
 
 Docker Compose deployment of an Apache web server with self-signed TLS certificates and a MySQL database backend. Both services use persistent volumes so data survives container restarts and rebuilds.
 

@@ -6,6 +6,11 @@
 
 # Scripts de gestion des utilisateurs
 
+![Architecture Diagram](./architecture-user.svg)
+
+---
+
+
 Collection de scripts pour créer, gérer et sauvegarder des comptes utilisateurs dans des environnements Linux et Windows. Tous les scripts de création d'utilisateurs lisent depuis un CSV ou une entrée canalisée, génèrent des noms d'utilisateur uniques (initiale du prénom + nom de famille, avec ajout de lettres de préfixe en cas de collision) et attribuent des mots de passe temporaires aléatoires.
 
 > **Cours :** Administration système / Scripting
@@ -65,6 +70,11 @@ Bash, PowerShell, outils CLI OpenLDAP (`ldapadd`, `ldappasswd`, `ldapmodify`, `l
 > **Solo project**
 
 # User Management Scripts
+
+![Architecture Diagram](./architecture-user.svg)
+
+---
+
 
 Collection of scripts for creating, managing, and backing up user accounts across Linux and Windows environments. All user creation scripts read from a CSV or piped input, generate unique usernames (first initial + last name, adding prefix letters on collision), and assign randomized temporary passwords.
 
