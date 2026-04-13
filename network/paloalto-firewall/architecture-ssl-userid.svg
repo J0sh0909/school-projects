@@ -1,9 +1,9 @@
 <svg width="1000" height="700" xmlns="http://www.w3.org/2000/svg">
   <rect width="100%" height="100%" fill="#ffffff" />
-  <rect x="50" y="50" width="300" height="600" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="2" />
-  <text x="200" y="90" font-family="sans-serif" font-weight="bold" font-size="18" text-anchor="middle" fill="#334155">Active Directory</text>
-  <rect x="400" y="50" width="200" height="600" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="2" />
-  <text x="500" y="90" font-family="sans-serif" font-weight="bold" font-size="18" text-anchor="middle" fill="#334155">Palo Alto FW</text>
-  <rect x="650" y="50" width="300" height="600" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="2" />
-  <text x="800" y="90" font-family="sans-serif" font-weight="bold" font-size="18" text-anchor="middle" fill="#334155">TRUST (LAN)</text>
+  <rect x="50" y="50" width="300" height="600" rx="10" fill="#f8fafc" stroke="#555" stroke-width="2" />
+  <text x="200" y="90" font-family="Arial" font-weight="bold" font-size="14" text-anchor="middle" fill="#334155">Active Directory</text>
+  <rect x="400" y="50" width="200" height="600" rx="10" fill="#f8fafc" stroke="#555" stroke-width="2" />
+  <text x="500" y="90" font-family="Arial" font-weight="bold" font-size="14" text-anchor="middle" fill="#334155">Palo Alto FW</text>
+  <rect x="650" y="50" width="300" height="600" rx="10" fill="#f8fafc" stroke="#555" stroke-width="2" />
+  <text x="800" y="90" font-family="Arial" font-weight="bold" font-size="14" text-anchor="middle" fill="#334155">TRUST (LAN)</text>
 </svg>
