@@ -1,35 +1,156 @@
-<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
-  <rect width="100%" height="100%" fill="#ffffff" />
+<svg width="1200" height="820" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+
   <!-- Background -->
-  <rect width="100%" height="100%" fill="#F0F0F0" />
-  
-  <!-- Network Diagram -->
-  <g stroke="#555" stroke-width="2" fill="none">
-    <!-- Area 0 Backbone -->
-    <rect x="50" y="50" width="700" height="150" stroke="#555" stroke-dasharray="5,5" fill="#FFE5E5" />
-    <text x="70" y="80" font-family="Arial" font-size="14" fill="#FF5733">Area 0 (Backbone)</text>
-    
-    <!-- Routers -->
-    <circle cx="150" cy="125" r="30" fill="#DDD" />
-    <text x="135" y="130" font-family="Arial" font-size="14">R0</text>
-    <circle cx="400" cy="125" r="30" fill="#DDD" />
-    <text x="385" y="130" font-family="Arial" font-size="14">R1</text>
-    <circle cx="650" cy="125" r="30" fill="#DDD" />
-    <text x="635" y="130" font-family="Arial" font-size="14">R2</text>
-    
-    <!-- Area 1 Routers -->
-    <circle cx="200" cy="450" r="30" fill="#DDD" />
-    <text x="185" y="455" font-family="Arial" font-size="14">R4</text>
-    <circle cx="600" cy="450" r="30" fill="#DDD" />
-    <text x="585" y="455" font-family="Arial" font-size="14">R3</text>
-    
-    <!-- Connections -->
-    <line x1="180" y1="125" x2="370" y2="125" />
-    <line x1="430" y1="125" x2="620" y2="125" />
-    <line x1="400" y1="155" x2="600" y2="420" />
-    <line x1="400" y1="155" x2="200" y2="420" />
-    <line x1="200" y1="420" x2="600" y2="420" />
-  </g>
-  
-  <text x="350" y="550" font-family="Arial" font-size="14" fill="#333">OSPF Multi-Area Architecture</text>
+  <rect width="1200" height="820" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="600" y="32" text-anchor="middle" font-size="18" font-weight="bold" fill="#1e293b">OSPF Multi-Area Routing -- 5 Routers, 3 Switches, 8 VLANs</text>
+
+  <!-- ======================== AREA 0 BAND ======================== -->
+  <rect x="40" y="50" width="1120" height="155" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2" stroke-dasharray="8,4"/>
+  <text x="60" y="73" font-size="12" font-weight="bold" fill="#2563eb">Area 0 -- Backbone (192.168.255.0/28)  Hello: 4s  Dead: 16s  Ref BW: 10 Gbps</text>
+
+  <!-- R0 -->
+  <rect x="80" y="88" width="100" height="52" rx="6" fill="#2563eb" stroke="#1d4ed8" stroke-width="2"/>
+  <text x="130" y="108" text-anchor="middle" font-size="14" font-weight="bold" fill="#ffffff">R0</text>
+  <text x="130" y="124" text-anchor="middle" font-size="10" fill="#bfdbfe">DR  |  Prio: 255</text>
+  <text x="130" y="138" text-anchor="middle" font-size="10" fill="#bfdbfe">192.168.255.14</text>
+  <text x="130" y="162" text-anchor="middle" font-size="9" fill="#64748b">ID: 255.255.255.255</text>
+
+  <!-- R1 -->
+  <rect x="550" y="88" width="100" height="52" rx="6" fill="#2563eb" stroke="#1d4ed8" stroke-width="2"/>
+  <text x="600" y="108" text-anchor="middle" font-size="14" font-weight="bold" fill="#ffffff">R1</text>
+  <text x="600" y="124" text-anchor="middle" font-size="10" fill="#bfdbfe">BDR  |  Prio: 100</text>
+  <text x="600" y="138" text-anchor="middle" font-size="10" fill="#bfdbfe">192.168.255.1</text>
+  <text x="600" y="162" text-anchor="middle" font-size="9" fill="#64748b">ID: 10.10.10.10</text>
+
+  <!-- R2 -->
+  <rect x="1020" y="88" width="100" height="52" rx="6" fill="#2563eb" stroke="#1d4ed8" stroke-width="2"/>
+  <text x="1070" y="108" text-anchor="middle" font-size="14" font-weight="bold" fill="#ffffff">R2</text>
+  <text x="1070" y="124" text-anchor="middle" font-size="10" fill="#bfdbfe">DROther  |  Prio: 10</text>
+  <text x="1070" y="138" text-anchor="middle" font-size="10" fill="#bfdbfe">192.168.255.2</text>
+  <text x="1070" y="162" text-anchor="middle" font-size="9" fill="#64748b">ID: 10.10.10.5</text>
+
+  <!-- Backbone links R0-R1, R1-R2 -->
+  <line x1="180" y1="114" x2="550" y2="114" stroke="#2563eb" stroke-width="2.5"/>
+  <line x1="650" y1="114" x2="1020" y2="114" stroke="#2563eb" stroke-width="2.5"/>
+
+  <!-- ======================== AREA 1 BAND ======================== -->
+  <rect x="40" y="220" width="1120" height="560" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="2" stroke-dasharray="8,4"/>
+  <text x="60" y="242" font-size="12" font-weight="bold" fill="#16a34a">Area 1 -- Inter-router links + End-user networks</text>
+
+  <!-- R4 -->
+  <rect x="160" y="310" width="100" height="52" rx="6" fill="#7c3aed" stroke="#6d28d9" stroke-width="2"/>
+  <text x="210" y="330" text-anchor="middle" font-size="14" font-weight="bold" fill="#ffffff">R4</text>
+  <text x="210" y="346" text-anchor="middle" font-size="10" fill="#ddd6fe">Site 1 -- g1/0</text>
+  <text x="210" y="360" text-anchor="middle" font-size="10" fill="#ddd6fe">ID: 10.5.5.5</text>
+
+  <!-- R3 -->
+  <rect x="940" y="310" width="100" height="52" rx="6" fill="#7c3aed" stroke="#6d28d9" stroke-width="2"/>
+  <text x="990" y="330" text-anchor="middle" font-size="14" font-weight="bold" fill="#ffffff">R3</text>
+  <text x="990" y="346" text-anchor="middle" font-size="10" fill="#ddd6fe">Site 2 -- g2/0</text>
+  <text x="990" y="360" text-anchor="middle" font-size="10" fill="#ddd6fe">ID: 10.10.5.5</text>
+
+  <!-- ===== INTER-ROUTER LINKS (Area 1) ===== -->
+
+  <!-- R1 - R2: 172.18.255.4/30, 1 Gbps GigE -->
+  <line x1="650" y1="140" x2="1020" y2="140" stroke="#16a34a" stroke-width="2"/>
+  <text x="835" y="200" text-anchor="middle" font-size="9" fill="#166534">R1-R2  172.18.255.4/30  1 Gbps (cost 10)</text>
+
+  <!-- R1 - R4: 172.18.255.8/30, 1 Gbps GigE -->
+  <line x1="570" y1="140" x2="247" y2="310" stroke="#16a34a" stroke-width="2"/>
+  <text x="370" y="258" text-anchor="middle" font-size="9" fill="#166534">R1-R4  172.18.255.8/30  1 Gbps (cost 10)</text>
+
+  <!-- R1 - R3: 172.18.255.0/30, 10 Mbps Ethernet (high cost, dashed) -->
+  <line x1="640" y1="155" x2="958" y2="310" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="7,3"/>
+  <text x="840" y="272" text-anchor="middle" font-size="9" fill="#dc2626">R1-R3  172.18.255.0/30  10 Mbps (cost 1000)</text>
+
+  <!-- R2 - R4: 172.17.255.16/30, 100 Mbps FastE -->
+  <line x1="1035" y1="155" x2="250" y2="310" stroke="#f97316" stroke-width="1.5"/>
+  <text x="570" y="310" text-anchor="middle" font-size="9" fill="#c2410c">R2-R4  172.17.255.16/30  100 Mbps (cost 100)</text>
+
+  <!-- R2 - R3: 172.18.255.20/30, 100 Mbps FastE -->
+  <line x1="1055" y1="140" x2="1020" y2="310" stroke="#f97316" stroke-width="1.5"/>
+  <text x="1060" y="250" text-anchor="middle" font-size="9" fill="#c2410c">R2-R3</text>
+  <text x="1060" y="262" text-anchor="middle" font-size="9" fill="#c2410c">172.18.255.20/30</text>
+  <text x="1060" y="274" text-anchor="middle" font-size="9" fill="#c2410c">100 Mbps (cost 100)</text>
+
+  <!-- R3 - R4: 172.18.255.12/30, 10 Mbps Ethernet (high cost, dashed) -->
+  <line x1="260" y1="336" x2="940" y2="336" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="7,3"/>
+  <text x="600" y="328" text-anchor="middle" font-size="9" fill="#dc2626">R3-R4  172.18.255.12/30  10 Mbps (cost 1000)</text>
+
+  <!-- ===== SWITCHES ===== -->
+
+  <!-- SW1 -->
+  <rect x="160" y="430" width="100" height="40" rx="4" fill="#0891b2" stroke="#0e7490" stroke-width="2"/>
+  <text x="210" y="452" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffffff">SW1</text>
+  <text x="210" y="465" text-anchor="middle" font-size="9" fill="#cffafe">Site 1</text>
+
+  <!-- SW2 -->
+  <rect x="940" y="430" width="100" height="40" rx="4" fill="#0891b2" stroke="#0e7490" stroke-width="2"/>
+  <text x="990" y="452" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffffff">SW2</text>
+  <text x="990" y="465" text-anchor="middle" font-size="9" fill="#cffafe">Site 2</text>
+
+  <!-- SW3 -->
+  <rect x="550" y="430" width="100" height="40" rx="4" fill="#0891b2" stroke="#0e7490" stroke-width="2"/>
+  <text x="600" y="452" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffffff">SW3</text>
+  <text x="600" y="465" text-anchor="middle" font-size="9" fill="#cffafe">Server Net</text>
+
+  <!-- R4 to SW1 -->
+  <line x1="210" y1="362" x2="210" y2="430" stroke="#0e7490" stroke-width="2"/>
+  <!-- R3 to SW2 -->
+  <line x1="990" y1="362" x2="990" y2="430" stroke="#0e7490" stroke-width="2"/>
+  <!-- R1 to SW3 (g2/0, passive) -->
+  <line x1="600" y1="140" x2="600" y2="430" stroke="#0e7490" stroke-width="2" stroke-dasharray="4,2"/>
+
+  <!-- ===== SITE 1 VLANs ===== -->
+  <rect x="50" y="500" width="320" height="125" rx="6" fill="#fef9c3" stroke="#ca8a04" stroke-width="1.5"/>
+  <text x="210" y="520" text-anchor="middle" font-size="11" font-weight="bold" fill="#713f12">Site 1 VLANs -- Router-on-a-Stick via R4 g1/0</text>
+  <text x="70" y="540" font-size="10" fill="#78350f">VLAN 50  Data 1         172.18.0.0/24   GW: 172.18.0.1</text>
+  <text x="70" y="556" font-size="10" fill="#78350f">VLAN 60  Voice 1        172.18.1.0/24   GW: 172.18.1.1</text>
+  <text x="70" y="572" font-size="10" fill="#78350f">VLAN 70  Home Auto 1    172.18.2.0/24   GW: 172.18.2.1</text>
+  <text x="70" y="588" font-size="10" fill="#78350f">VLAN 80  Video 1        172.18.3.0/24   GW: 172.18.3.1</text>
+  <line x1="210" y1="598" x2="350" y2="598" stroke="#ca8a04" stroke-width="1"/>
+  <text x="70" y="614" font-size="9" fill="#64748b">All passive (no OSPF hellos)  |  DHCP relay -- 172.18.254.254</text>
+  <line x1="210" y1="470" x2="210" y2="500" stroke="#ca8a04" stroke-width="1.5"/>
+
+  <!-- ===== SITE 2 VLANs ===== -->
+  <rect x="830" y="500" width="320" height="125" rx="6" fill="#fef9c3" stroke="#ca8a04" stroke-width="1.5"/>
+  <text x="990" y="520" text-anchor="middle" font-size="11" font-weight="bold" fill="#713f12">Site 2 VLANs -- Router-on-a-Stick via R3 g2/0</text>
+  <text x="850" y="540" font-size="10" fill="#78350f">VLAN 10  Data 2         172.18.4.0/24   GW: 172.18.4.1</text>
+  <text x="850" y="556" font-size="10" fill="#78350f">VLAN 20  Voice 2        172.18.5.0/24   GW: 172.18.5.1</text>
+  <text x="850" y="572" font-size="10" fill="#78350f">VLAN 30  Home Auto 2    172.18.6.0/24   GW: 172.18.6.1</text>
+  <text x="850" y="588" font-size="10" fill="#78350f">VLAN 40  Video 2        172.18.7.0/24   GW: 172.18.7.1</text>
+  <line x1="850" y1="598" x2="1140" y2="598" stroke="#ca8a04" stroke-width="1"/>
+  <text x="850" y="614" font-size="9" fill="#64748b">All passive (no OSPF hellos)  |  DHCP relay -- 172.18.254.254</text>
+  <line x1="990" y1="470" x2="990" y2="500" stroke="#ca8a04" stroke-width="1.5"/>
+
+  <!-- ===== SERVER NETWORK ===== -->
+  <rect x="430" y="500" width="340" height="90" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="600" y="520" text-anchor="middle" font-size="11" font-weight="bold" fill="#166534">Server Network -- R1 g2/0 (passive)</text>
+  <text x="450" y="540" font-size="10" fill="#166534">172.18.254.0/24  -- No OSPF advertisements</text>
+  <rect x="490" y="552" width="220" height="28" rx="4" fill="#bbf7d0" stroke="#16a34a" stroke-width="1"/>
+  <text x="600" y="571" text-anchor="middle" font-size="11" font-weight="bold" fill="#166534">DHCP Server: 172.18.254.254</text>
+  <line x1="600" y1="470" x2="600" y2="500" stroke="#16a34a" stroke-width="1.5"/>
+
+  <!-- ===== LEGEND ===== -->
+  <rect x="50" y="650" width="680" height="120" rx="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="70" y="672" font-size="12" font-weight="bold" fill="#1e293b">Legend</text>
+  <line x1="70" y1="690" x2="115" y2="690" stroke="#2563eb" stroke-width="2.5"/>
+  <text x="125" y="694" font-size="10" fill="#1e293b">Area 0 backbone link</text>
+  <line x1="70" y1="710" x2="115" y2="710" stroke="#16a34a" stroke-width="2"/>
+  <text x="125" y="714" font-size="10" fill="#1e293b">Area 1 link -- GigabitEthernet 1 Gbps (cost 10)</text>
+  <line x1="70" y1="730" x2="115" y2="730" stroke="#f97316" stroke-width="1.5"/>
+  <text x="125" y="734" font-size="10" fill="#1e293b">Area 1 link -- FastEthernet 100 Mbps (cost 100)</text>
+  <line x1="70" y1="750" x2="115" y2="750" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="7,3"/>
+  <text x="125" y="754" font-size="10" fill="#1e293b">Area 1 link -- Ethernet 10 Mbps (cost 1000, high cost)</text>
+  <rect x="380" y="682" width="14" height="14" rx="3" fill="#2563eb"/>
+  <text x="402" y="694" font-size="10" fill="#1e293b">Router -- Area 0 (R0, R1, R2)</text>
+  <rect x="380" y="702" width="14" height="14" rx="3" fill="#7c3aed"/>
+  <text x="402" y="714" font-size="10" fill="#1e293b">Router -- Area 1 (R3, R4)</text>
+  <rect x="380" y="722" width="14" height="14" rx="3" fill="#0891b2"/>
+  <text x="402" y="734" font-size="10" fill="#1e293b">Switch (SW1, SW2, SW3)</text>
+  <rect x="380" y="742" width="14" height="14" rx="3" fill="#fef9c3" stroke="#ca8a04"/>
+  <text x="402" y="754" font-size="10" fill="#1e293b">VLAN segment (router-on-a-stick)</text>
+
 </svg>

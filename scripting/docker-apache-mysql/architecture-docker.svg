@@ -1,9 +1,78 @@
-<svg width="1000" height="700" xmlns="http://www.w3.org/2000/svg">
-  <rect width="100%" height="100%" fill="#ffffff" />
-  <rect x="50" y="50" width="900" height="150" rx="10" fill="#f8fafc" stroke="#555" stroke-width="2" />
-  <text x="500" y="130" font-family="Arial" font-weight="bold" font-size="14" text-anchor="middle" fill="#334155">Docker Compose Orchestration</text>
-  <rect x="70" y="250" width="400" height="300" rx="10" fill="#e2e8f0" stroke="#555" stroke-width="2" />
-  <text x="270" y="400" font-family="Arial" font-weight="bold" font-size="14" text-anchor="middle" fill="#334155">Apache Web Server</text>
-  <rect x="530" y="250" width="400" height="300" rx="10" fill="#e2e8f0" stroke="#555" stroke-width="2" />
-  <text x="730" y="400" font-family="Arial" font-weight="bold" font-size="14" text-anchor="middle" fill="#334155">MySQL Database</text>
+<svg width="1000" height="520" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+  <rect width="1000" height="520" fill="#ffffff"/>
+  <text x="500" y="30" text-anchor="middle" font-size="17" font-weight="bold" fill="#1e293b">Docker -- Self-Signed HTTPS Apache + MySQL</text>
+  <text x="500" y="50" text-anchor="middle" font-size="11" fill="#64748b">docker-compose up -d --build  |  Persistent volumes  |  bridge network  |  0.25 CPU / 400MB RAM limit</text>
+
+  <defs>
+    <marker id="arr" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#475569"/>
+    </marker>
+  </defs>
+
+  <!-- Browser -->
+  <ellipse cx="90" cy="240" rx="70" ry="40" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="90" y="236" text-anchor="middle" font-size="11" font-weight="bold" fill="#334155">Browser</text>
+  <text x="90" y="252" text-anchor="middle" font-size="9" fill="#64748b">https://localhost</text>
+  <text x="90" y="264" text-anchor="middle" font-size="9" fill="#64748b">:5000</text>
+  <line x1="160" y1="240" x2="200" y2="240" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="180" y="232" text-anchor="middle" font-size="9" fill="#64748b">HTTPS</text>
+
+  <!-- Docker Compose border -->
+  <rect x="195" y="65" width="750" height="380" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="2" stroke-dasharray="7,4"/>
+  <text x="215" y="86" font-size="11" font-weight="bold" fill="#1d4ed8">Docker Compose -- app-network (bridge)</text>
+
+  <!-- Apache container -->
+  <rect x="215" y="100" width="320" height="240" rx="7" fill="#dc2626" stroke="#b91c1c" stroke-width="2"/>
+  <text x="375" y="124" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffffff">apachephp-dhcp</text>
+  <text x="375" y="142" text-anchor="middle" font-size="10" fill="#fecaca">Custom image (Dockerfile)</text>
+  <text x="375" y="160" text-anchor="middle" font-size="10" fill="#fecaca">Port: 5000:443</text>
+  <text x="375" y="178" text-anchor="middle" font-size="10" fill="#fecaca">Apache + PHP + OpenSSL</text>
+  <text x="375" y="196" text-anchor="middle" font-size="10" fill="#fecaca">Self-signed TLS cert</text>
+  <text x="375" y="214" text-anchor="middle" font-size="10" fill="#fecaca">PHP page queries MySQL</text>
+  <text x="375" y="232" text-anchor="middle" font-size="10" fill="#fecaca">Resource limits:</text>
+  <text x="375" y="248" text-anchor="middle" font-size="10" fill="#fecaca">0.25 CPU  |  400MB RAM</text>
+  <text x="375" y="266" text-anchor="middle" font-size="9" fill="#fca5a5">depends_on: mysql (healthy)</text>
+  <!-- Volume -->
+  <rect x="233" y="282" width="284" height="44" rx="4" fill="#b91c1c" stroke="#991b1b" stroke-width="1"/>
+  <text x="375" y="300" text-anchor="middle" font-size="9" font-weight="bold" fill="#ffffff">Volume: web_data</text>
+  <text x="375" y="316" text-anchor="middle" font-size="9" fill="#fecaca">Mounted: /var/www/html</text>
+  <text x="375" y="328" text-anchor="middle" font-size="9" fill="#fecaca">Web content persists across restarts</text>
+
+  <!-- Arrow Apache to MySQL -->
+  <line x1="535" y1="230" x2="585" y2="230" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="560" y="222" text-anchor="middle" font-size="9" fill="#334155">MySQL</text>
+  <text x="560" y="244" text-anchor="middle" font-size="9" fill="#334155">3306</text>
+
+  <!-- MySQL container -->
+  <rect x="585" y="100" width="340" height="240" rx="7" fill="#0891b2" stroke="#0e7490" stroke-width="2"/>
+  <text x="755" y="124" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffffff">MySQL</text>
+  <text x="755" y="142" text-anchor="middle" font-size="10" fill="#cffafe">mysql:latest</text>
+  <text x="755" y="160" text-anchor="middle" font-size="10" fill="#cffafe">Port: 3307:3306</text>
+  <text x="755" y="178" text-anchor="middle" font-size="10" fill="#cffafe">Database backend</text>
+  <text x="755" y="196" text-anchor="middle" font-size="10" fill="#cffafe">Seeded via table.sql</text>
+  <text x="755" y="214" text-anchor="middle" font-size="10" fill="#cffafe">table.sql mounted to</text>
+  <text x="755" y="230" text-anchor="middle" font-size="10" fill="#cffafe">/docker-entrypoint-initdb.d/</text>
+  <text x="755" y="248" text-anchor="middle" font-size="10" fill="#cffafe">Creates `noms` table</text>
+  <text x="755" y="266" text-anchor="middle" font-size="9" fill="#a5f3fc">Credentials from .env file</text>
+  <!-- Volume -->
+  <rect x="603" y="282" width="304" height="44" rx="4" fill="#0e7490" stroke="#0c4a6e" stroke-width="1"/>
+  <text x="755" y="300" text-anchor="middle" font-size="9" font-weight="bold" fill="#ffffff">Volume: mysql_data</text>
+  <text x="755" y="316" text-anchor="middle" font-size="9" fill="#cffafe">Mounted: /var/lib/mysql</text>
+  <text x="755" y="328" text-anchor="middle" font-size="9" fill="#cffafe">DB files persist across restarts</text>
+
+  <!-- docker-compose.yml note -->
+  <rect x="215" y="362" width="710" height="68" rx="5" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="570" y="382" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e293b">docker-compose.yml</text>
+  <text x="570" y="400" text-anchor="middle" font-size="10" fill="#334155">Defines: web service + mysql service + named volumes (web_data, mysql_data) + app-network bridge</text>
+  <text x="570" y="418" text-anchor="middle" font-size="10" fill="#334155">cp .env.example .env  --  docker-compose up -d --build  --  access at https://localhost:5000</text>
+
+  <!-- Legend -->
+  <rect x="30" y="460" width="940" height="48" rx="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect x="50" y="474" width="12" height="12" rx="2" fill="#dc2626"/>
+  <text x="70" y="485" font-size="10" fill="#334155">Apache + PHP (custom image, self-signed TLS)</text>
+  <rect x="320" y="474" width="12" height="12" rx="2" fill="#0891b2"/>
+  <text x="340" y="485" font-size="10" fill="#334155">MySQL (official image, seeded via table.sql)</text>
+  <rect x="590" y="474" width="12" height="12" rx="2" fill="#2563eb" fill-opacity="0.3"/>
+  <text x="610" y="485" font-size="10" fill="#334155">Named volumes (persistent across container lifecycle)</text>
+  <text x="50" y="501" font-size="9" fill="#64748b">Tech: Docker  |  Docker Compose  |  Apache httpd  |  MySQL  |  OpenSSL (self-signed cert)</text>
 </svg>

@@ -1,9 +1,89 @@
-<svg width="1000" height="700" xmlns="http://www.w3.org/2000/svg">
-  <rect width="100%" height="100%" fill="#ffffff" />
-  <rect x="100" y="50" width="300" height="150" rx="10" fill="#f8fafc" stroke="#555" stroke-width="2" />
-  <text x="250" y="130" font-family="Arial" font-weight="bold" font-size="14" text-anchor="middle" fill="#334155">CIS Benchmark XML</text>
-  <rect x="100" y="250" width="800" height="250" rx="10" fill="#e2e8f0" stroke="#555" stroke-width="2" />
-  <text x="500" y="380" font-family="Arial" font-weight="bold" font-size="14" text-anchor="middle" fill="#334155">Remediation Scripts (Bash/PowerShell)</text>
-  <rect x="100" y="550" width="800" height="100" rx="10" fill="#f8fafc" stroke="#555" stroke-width="2" />
-  <text x="500" y="610" font-family="Arial" font-weight="bold" font-size="14" text-anchor="middle" fill="#334155">Target System</text>
+<svg width="1100" height="580" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+  <rect width="1100" height="580" fill="#ffffff"/>
+  <text x="550" y="30" text-anchor="middle" font-size="17" font-weight="bold" fill="#1e293b">CIS Benchmark Compliance Scripts -- Ubuntu 24.04 + Windows 11</text>
+  <text x="550" y="50" text-anchor="middle" font-size="11" fill="#64748b">XML-driven audit and auto-remediation  |  -v validate  |  -c correct  |  -s report</text>
+
+  <defs>
+    <marker id="arr" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#475569"/>
+    </marker>
+  </defs>
+
+  <!-- XML Source of Truth -->
+  <rect x="390" y="65" width="320" height="80" rx="7" fill="#7c3aed" stroke="#6d28d9" stroke-width="2"/>
+  <text x="550" y="90" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffffff">XML Config (file.xml)</text>
+  <text x="550" y="108" text-anchor="middle" font-size="10" fill="#ddd6fe">Single source of truth for expected values</text>
+  <text x="550" y="124" text-anchor="middle" font-size="10" fill="#ddd6fe">One file per OS  |  Parsed at runtime</text>
+
+  <!-- Arrow to Ubuntu script -->
+  <line x1="430" y1="145" x2="280" y2="185" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+  <!-- Arrow to Windows script -->
+  <line x1="670" y1="145" x2="820" y2="185" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Ubuntu Script -->
+  <rect x="50" y="185" width="440" height="220" rx="7" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="270" y="207" text-anchor="middle" font-size="12" font-weight="bold" fill="#166534">Ubuntu 24.04 -- supervision_ub24.sh (Bash)</text>
+
+  <rect x="68" y="218" width="190" height="175" rx="5" fill="#16a34a" stroke="#15803d" stroke-width="1.5"/>
+  <text x="163" y="238" text-anchor="middle" font-size="10" font-weight="bold" fill="#ffffff">Checks</text>
+  <text x="78" y="256" font-size="9" fill="#dcfce7">- Unnecessary pkgs (telnet, ftp)</text>
+  <text x="78" y="272" font-size="9" fill="#dcfce7">- IPv4 forwarding</text>
+  <text x="78" y="288" font-size="9" fill="#dcfce7">- UFW firewall installed + enabled</text>
+  <text x="78" y="304" font-size="9" fill="#dcfce7">- Password policy (age, hash, lock)</text>
+  <text x="78" y="320" font-size="9" fill="#dcfce7">- UID 0 accounts (root only)</text>
+  <text x="78" y="336" font-size="9" fill="#dcfce7">- System account login shells</text>
+  <text x="78" y="352" font-size="9" fill="#dcfce7">- journald logging active</text>
+  <text x="78" y="368" font-size="9" fill="#dcfce7">- /etc/passwd permissions</text>
+
+  <rect x="272" y="218" width="200" height="175" rx="5" fill="#15803d" stroke="#166534" stroke-width="1.5"/>
+  <text x="372" y="238" text-anchor="middle" font-size="10" font-weight="bold" fill="#ffffff">Remediation Tools</text>
+  <text x="282" y="256" font-size="9" fill="#dcfce7">apt remove (packages)</text>
+  <text x="282" y="272" font-size="9" fill="#dcfce7">sysctl (network params)</text>
+  <text x="282" y="288" font-size="9" fill="#dcfce7">systemctl (services)</text>
+  <text x="282" y="304" font-size="9" fill="#dcfce7">sed (config file edits)</text>
+  <text x="282" y="320" font-size="9" fill="#dcfce7">chmod (file permissions)</text>
+  <text x="282" y="336" font-size="9" fill="#dcfce7">chage (password aging)</text>
+  <text x="282" y="352" font-size="9" fill="#dcfce7">passwd -l (lock accounts)</text>
+  <text x="282" y="368" font-size="9" fill="#dcfce7">usermod (shell changes)</text>
+
+  <!-- Windows Script -->
+  <rect x="610" y="185" width="440" height="220" rx="7" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="830" y="207" text-anchor="middle" font-size="12" font-weight="bold" fill="#1d4ed8">Windows 11 -- supervision_win11ed.ps1 (PowerShell)</text>
+
+  <rect x="628" y="218" width="190" height="175" rx="5" fill="#2563eb" stroke="#1d4ed8" stroke-width="1.5"/>
+  <text x="723" y="238" text-anchor="middle" font-size="10" font-weight="bold" fill="#ffffff">Checks</text>
+  <text x="638" y="256" font-size="9" fill="#bfdbfe">- Password history/age/length</text>
+  <text x="638" y="272" font-size="9" fill="#bfdbfe">- Password complexity + reversible enc</text>
+  <text x="638" y="288" font-size="9" fill="#bfdbfe">- Account lockout (threshold, window)</text>
+  <text x="638" y="304" font-size="9" fill="#bfdbfe">- Guest account disabled</text>
+  <text x="638" y="320" font-size="9" fill="#bfdbfe">- Blank passwords console-only</text>
+  <text x="638" y="336" font-size="9" fill="#bfdbfe">- FTP service (FTPSVC) disabled</text>
+  <text x="638" y="352" font-size="9" fill="#bfdbfe">- Firewall (Domain/Private/Public)</text>
+  <text x="638" y="368" font-size="9" fill="#bfdbfe">- Audit policy (logon, accounts)</text>
+
+  <rect x="832" y="218" width="200" height="175" rx="5" fill="#1d4ed8" stroke="#1e3a8a" stroke-width="1.5"/>
+  <text x="932" y="238" text-anchor="middle" font-size="10" font-weight="bold" fill="#ffffff">Remediation Tools</text>
+  <text x="842" y="256" font-size="9" fill="#bfdbfe">secedit (security policy)</text>
+  <text x="842" y="272" font-size="9" fill="#bfdbfe">Set-ItemProperty (registry)</text>
+  <text x="842" y="288" font-size="9" fill="#bfdbfe">auditpol (audit policy)</text>
+  <text x="842" y="304" font-size="9" fill="#bfdbfe">Set-Service (service state)</text>
+  <text x="842" y="320" font-size="9" fill="#bfdbfe">Set-NetFirewallProfile</text>
+  <text x="842" y="336" font-size="9" fill="#bfdbfe">System.Xml.XmlDocument</text>
+  <text x="842" y="352" font-size="9" fill="#bfdbfe">(XML parsing)</text>
+
+  <!-- Shared CLI flags -->
+  <rect x="200" y="430" width="700" height="80" rx="7" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="550" y="450" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e293b">Shared Flag Interface (both scripts)</text>
+  <text x="550" y="470" text-anchor="middle" font-size="10" fill="#334155">-f file.xml  (required)  |  -v validate mode  |  -c correct mode  |  -q quiet  |  -s outfile  |  -2 dual output</text>
+  <text x="550" y="490" text-anchor="middle" font-size="10" fill="#64748b">sudo bash script.sh -f file.xml -c -s report.txt  --  Run as admin/root for remediation</text>
+
+  <!-- Arrows from scripts to flags -->
+  <line x1="270" y1="405" x2="400" y2="430" stroke="#475569" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="830" y1="405" x2="700" y2="430" stroke="#475569" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Report output -->
+  <rect x="380" y="530" width="340" height="36" rx="5" fill="#fef9c3" stroke="#ca8a04" stroke-width="1.5"/>
+  <text x="550" y="548" text-anchor="middle" font-size="10" font-weight="bold" fill="#713f12">Output: terminal  |  report.txt  |  dual mode</text>
+  <text x="550" y="561" text-anchor="middle" font-size="9" fill="#713f12">Compliant / Non-compliant per check  |  exit codes</text>
+  <line x1="550" y1="510" x2="550" y2="530" stroke="#ca8a04" stroke-width="1.5" marker-end="url(#arr)"/>
 </svg>

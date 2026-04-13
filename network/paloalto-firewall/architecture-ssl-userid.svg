@@ -1,9 +1,126 @@
-<svg width="1000" height="700" xmlns="http://www.w3.org/2000/svg">
-  <rect width="100%" height="100%" fill="#ffffff" />
-  <rect x="50" y="50" width="300" height="600" rx="10" fill="#f8fafc" stroke="#555" stroke-width="2" />
-  <text x="200" y="90" font-family="Arial" font-weight="bold" font-size="14" text-anchor="middle" fill="#334155">Active Directory</text>
-  <rect x="400" y="50" width="200" height="600" rx="10" fill="#f8fafc" stroke="#555" stroke-width="2" />
-  <text x="500" y="90" font-family="Arial" font-weight="bold" font-size="14" text-anchor="middle" fill="#334155">Palo Alto FW</text>
-  <rect x="650" y="50" width="300" height="600" rx="10" fill="#f8fafc" stroke="#555" stroke-width="2" />
-  <text x="800" y="90" font-family="Arial" font-weight="bold" font-size="14" text-anchor="middle" fill="#334155">TRUST (LAN)</text>
+<svg width="1100" height="600" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+
+  <!-- Background -->
+  <rect width="1100" height="600" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="550" y="30" text-anchor="middle" font-size="17" font-weight="bold" fill="#1e293b">TP4 -- SSL Decryption (Forward Proxy) + User-ID + AD Integration</text>
+  <text x="550" y="50" text-anchor="middle" font-size="11" fill="#64748b">Identity-based policy: only AD\marketing group gets internet access  |  All HTTPS traffic inspected</text>
+
+  <defs>
+    <marker id="arr" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#475569"/>
+    </marker>
+    <marker id="arr-purple" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#7c3aed"/>
+    </marker>
+  </defs>
+
+  <!-- ===== CLIENT (TRUST) ===== -->
+  <rect x="30" y="65" width="200" height="340" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="130" y="87" text-anchor="middle" font-size="11" font-weight="bold" fill="#166534">Client (TRUST)</text>
+
+  <rect x="50" y="97" width="160" height="80" rx="5" fill="#16a34a" stroke="#15803d" stroke-width="1.5"/>
+  <text x="130" y="118" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffffff">Windows Client</text>
+  <text x="130" y="136" text-anchor="middle" font-size="9" fill="#dcfce7">Domain joined</text>
+  <text x="130" y="152" text-anchor="middle" font-size="9" fill="#dcfce7">AD\marketing member</text>
+  <text x="130" y="168" text-anchor="middle" font-size="9" fill="#dcfce7">Trusts PA root CA cert</text>
+
+  <rect x="50" y="195" width="160" height="65" rx="4" fill="#bbf7d0" stroke="#16a34a" stroke-width="1"/>
+  <text x="130" y="213" text-anchor="middle" font-size="9" font-weight="bold" fill="#166534">SSL Inspection</text>
+  <text x="130" y="229" text-anchor="middle" font-size="9" fill="#166534">PA self-signed root CA</text>
+  <text x="130" y="245" text-anchor="middle" font-size="9" fill="#166534">imported into Win</text>
+  <text x="130" y="259" text-anchor="middle" font-size="9" fill="#166534">trusted root store</text>
+
+  <rect x="50" y="278" width="160" height="60" rx="4" fill="#bbf7d0" stroke="#16a34a" stroke-width="1"/>
+  <text x="130" y="296" text-anchor="middle" font-size="9" font-weight="bold" fill="#166534">Security Rule Applied</text>
+  <text x="130" y="312" text-anchor="middle" font-size="9" fill="#166534">TRUST -- UNTRUST</text>
+  <text x="130" y="328" text-anchor="middle" font-size="9" fill="#166534">Only AD\marketing: Allow</text>
+  <text x="130" y="342" text-anchor="middle" font-size="9" fill="#dc2626">All others: Deny</text>
+
+  <!-- ===== PALO ALTO ===== -->
+  <rect x="260" y="65" width="540" height="440" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="2.5"/>
+  <text x="530" y="87" text-anchor="middle" font-size="13" font-weight="bold" fill="#1d4ed8">Palo Alto NGFW -- PAN-OS</text>
+
+  <!-- SSL Decryption module -->
+  <rect x="280" y="100" width="490" height="125" rx="6" fill="#1d4ed8" fill-opacity="0.1" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="525" y="120" text-anchor="middle" font-size="11" font-weight="bold" fill="#1d4ed8">SSL Decryption -- Forward Proxy</text>
+  <text x="300" y="140" font-size="10" fill="#334155">- Self-signed root CA certificate created on Palo Alto</text>
+  <text x="300" y="158" font-size="10" fill="#334155">- CA cert imported into Windows trusted root store on client</text>
+  <text x="300" y="176" font-size="10" fill="#334155">- SSL inspection rule: TRUST -- UNTRUST  |  type: ssl-forward-proxy</text>
+  <text x="300" y="194" font-size="10" fill="#334155">- PA decrypts, inspects for threats + policy, re-encrypts before forwarding</text>
+  <text x="300" y="210" font-size="10" fill="#334155">- Client sees PA-issued cert (trusted because root CA is in client store)</text>
+
+  <!-- User-ID module -->
+  <rect x="280" y="240" width="490" height="180" rx="6" fill="#7c3aed" fill-opacity="0.1" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="525" y="260" text-anchor="middle" font-size="11" font-weight="bold" fill="#6d28d9">User-ID Integration -- Active Directory</text>
+
+  <rect x="295" y="270" width="215" height="140" rx="5" fill="#7c3aed" stroke="#6d28d9" stroke-width="1.5"/>
+  <text x="402" y="290" text-anchor="middle" font-size="10" font-weight="bold" fill="#ffffff">User-ID Agent</text>
+  <text x="402" y="308" text-anchor="middle" font-size="9" fill="#ddd6fe">Monitors security event logs</text>
+  <text x="402" y="324" text-anchor="middle" font-size="9" fill="#ddd6fe">Monitors user sessions</text>
+  <text x="402" y="340" text-anchor="middle" font-size="9" fill="#ddd6fe">Client probing enabled</text>
+  <text x="402" y="356" text-anchor="middle" font-size="9" fill="#ddd6fe">WinRM-HTTP to DC</text>
+  <text x="402" y="372" text-anchor="middle" font-size="9" fill="#ddd6fe">Maps: IP -- username</text>
+  <text x="402" y="388" text-anchor="middle" font-size="9" fill="#c4b5fd">Real-time user-to-IP tracking</text>
+
+  <rect x="530" y="270" width="225" height="140" rx="5" fill="#6d28d9" stroke="#5b21b6" stroke-width="1.5"/>
+  <text x="642" y="290" text-anchor="middle" font-size="10" font-weight="bold" fill="#ffffff">LDAP + Kerberos</text>
+  <text x="642" y="308" text-anchor="middle" font-size="9" fill="#ddd6fe">LDAP profile -- port 389</text>
+  <text x="642" y="324" text-anchor="middle" font-size="9" fill="#ddd6fe">Base DN: dc=ad,dc=local</text>
+  <text x="642" y="340" text-anchor="middle" font-size="9" fill="#ddd6fe">Kerberos -- port 88</text>
+  <text x="642" y="356" text-anchor="middle" font-size="9" fill="#ddd6fe">Group mapping via LDAP</text>
+  <text x="642" y="372" text-anchor="middle" font-size="9" fill="#ddd6fe">Pulls AD groups into PA</text>
+  <text x="642" y="388" text-anchor="middle" font-size="9" fill="#c4b5fd">AD admin svc account</text>
+
+  <!-- Identity-based rule -->
+  <rect x="280" y="438" width="490" height="55" rx="5" fill="#fef9c3" stroke="#ca8a04" stroke-width="1.5"/>
+  <text x="525" y="456" text-anchor="middle" font-size="10" font-weight="bold" fill="#713f12">Identity-Based Security Rule</text>
+  <text x="525" y="474" text-anchor="middle" font-size="10" fill="#713f12">TRUST -- UNTRUST  |  Apps: SSL, web-browsing, DNS, HTTPS  |  Source user: AD\marketing  |  Action: Allow</text>
+  <text x="525" y="490" text-anchor="middle" font-size="10" fill="#dc2626">All other users from TRUST zone trying to reach UNTRUST: Denied at firewall</text>
+
+  <!-- ===== AD DOMAIN CONTROLLER ===== -->
+  <rect x="830" y="65" width="240" height="340" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="950" y="87" text-anchor="middle" font-size="11" font-weight="bold" fill="#92400e">AD Domain Controller</text>
+  <text x="950" y="103" text-anchor="middle" font-size="9" fill="#92400e">Windows Server</text>
+
+  <rect x="850" y="115" width="200" height="120" rx="5" fill="#d97706" stroke="#b45309" stroke-width="1.5"/>
+  <text x="950" y="137" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffffff">AD-DS</text>
+  <text x="950" y="155" text-anchor="middle" font-size="9" fill="#fef3c7">Domain: ad.local</text>
+  <text x="950" y="171" text-anchor="middle" font-size="9" fill="#fef3c7">Users + Groups</text>
+  <text x="950" y="187" text-anchor="middle" font-size="9" fill="#fef3c7">AD\marketing group</text>
+  <text x="950" y="203" text-anchor="middle" font-size="9" fill="#fef3c7">Security event logs</text>
+  <text x="950" y="219" text-anchor="middle" font-size="9" fill="#fef3c7">Kerberos auth (port 88)</text>
+  <text x="950" y="235" text-anchor="middle" font-size="9" fill="#fef3c7">LDAP (port 389)</text>
+
+  <rect x="850" y="253" width="200" height="100" rx="5" fill="#b45309" stroke="#92400e" stroke-width="1.5"/>
+  <text x="950" y="273" text-anchor="middle" font-size="10" font-weight="bold" fill="#ffffff">Server Monitoring</text>
+  <text x="950" y="291" text-anchor="middle" font-size="9" fill="#fef3c7">WinRM-HTTP from PA</text>
+  <text x="950" y="307" text-anchor="middle" font-size="9" fill="#fef3c7">PA queries logon events</text>
+  <text x="950" y="323" text-anchor="middle" font-size="9" fill="#fef3c7">Maps username to IP</text>
+  <text x="950" y="339" text-anchor="middle" font-size="9" fill="#fef3c7">in real-time</text>
+
+  <!-- INTERNET -->
+  <ellipse cx="950" cy="460" rx="90" ry="35" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="950" y="455" text-anchor="middle" font-size="12" font-weight="bold" fill="#334155">Internet</text>
+  <text x="950" y="472" text-anchor="middle" font-size="9" fill="#64748b">UNTRUST zone</text>
+
+  <!-- Arrows -->
+  <line x1="230" y1="200" x2="280" y2="200" stroke="#16a34a" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="760" y1="360" x2="830" y2="240" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arr-purple)"/>
+  <text x="785" y="295" font-size="9" fill="#7c3aed">LDAP/Kerberos</text>
+  <text x="785" y="308" font-size="9" fill="#7c3aed">+ WinRM query</text>
+  <line x1="800" y1="200" x2="830" y2="200" stroke="#d97706" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arr)"/>
+  <line x1="760" y1="490" x2="850" y2="460" stroke="#94a3b8" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="790" y="480" font-size="9" fill="#64748b">inspected</text>
+  <text x="790" y="493" font-size="9" fill="#64748b">HTTPS</text>
+
+  <!-- Legend -->
+  <rect x="30" y="530" width="1040" height="55" rx="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="550" y="550" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e293b">Key Concepts</text>
+  <text x="100" y="572" font-size="10" fill="#334155">SSL forward proxy: PA decrypts + inspects all HTTPS  |  Client trusts PA-issued certs via imported root CA</text>
+  <text x="100" y="574"/>
+  <text x="100" y="576" font-size="10" fill="#334155"/>
+  <text x="550" y="576" font-size="10" fill="#334155">User-ID: real-time IP-to-username mapping from AD logs  |  Group mapping: AD\marketing = internet access</text>
+
 </svg>

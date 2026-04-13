@@ -1,16 +1,92 @@
-<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
-  <rect width="100%" height="100%" fill="#ffffff" />
-  <rect x="50" y="150" width="200" height="200" rx="10" fill="#f8fafc" stroke="#555" stroke-width="2" />
-  <text x="150" y="240" font-family="Arial" font-weight="bold" font-size="14" text-anchor="middle" fill="#334155">Input CSV / Data</text>
-  <rect x="300" y="150" width="200" height="200" rx="10" fill="#e2e8f0" stroke="#555" stroke-width="2" />
-  <text x="400" y="240" font-family="Arial" font-weight="bold" font-size="14" text-anchor="middle" fill="#334155">Script (Bash/PS)</text>
-  <rect x="550" y="150" width="200" height="150" rx="10" fill="#f8fafc" stroke="#555" stroke-width="2" />
-  <text x="650" y="230" font-family="Arial" font-weight="bold" font-size="14" text-anchor="middle" fill="#334155">Target System</text>
-  <path d="M 250 250 L 300 250" stroke="#555" stroke-width="3" marker-end="url(#arrow)" />
-  <path d="M 500 250 L 550 225" stroke="#555" stroke-width="3" marker-end="url(#arrow)" />
+<svg width="1100" height="580" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+  <rect width="1100" height="580" fill="#ffffff"/>
+  <text x="550" y="30" text-anchor="middle" font-size="17" font-weight="bold" fill="#1e293b">User Management Scripts -- Linux + Windows  |  LDAP + AD + Local</text>
+  <text x="550" y="50" text-anchor="middle" font-size="11" fill="#64748b">CSV/stdin input  |  Unique username generation (first initial + last name + collision suffix)  |  Random temp passwords</text>
+
   <defs>
-    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L9,3 z" fill="#334155" />
+    <marker id="arr" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#475569"/>
     </marker>
   </defs>
+
+  <!-- Input -->
+  <rect x="380" y="65" width="340" height="65" rx="7" fill="#7c3aed" stroke="#6d28d9" stroke-width="2"/>
+  <text x="550" y="88" text-anchor="middle" font-size="12" font-weight="bold" fill="#ffffff">Input: CSV or stdin pipe</text>
+  <text x="550" y="106" text-anchor="middle" font-size="10" fill="#ddd6fe">system;prenom;nom;no_emp;dept;date_fin;groupe</text>
+  <text x="550" y="121" text-anchor="middle" font-size="9" fill="#c4b5fd">Unique username: first_initial + last_name  |  Collision: add prefix letters</text>
+
+  <line x1="450" y1="130" x2="280" y2="170" stroke="#475569" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="550" y1="130" x2="550" y2="170" stroke="#475569" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="650" y1="130" x2="820" y2="170" stroke="#475569" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- ===== LINUX SCRIPTS ===== -->
+  <rect x="30" y="170" width="470" height="290" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="265" y="192" text-anchor="middle" font-size="12" font-weight="bold" fill="#166534">Linux Scripts (Bash)</text>
+
+  <!-- LDAP creation -->
+  <rect x="50" y="202" width="210" height="130" rx="5" fill="#16a34a" stroke="#15803d" stroke-width="1.5"/>
+  <text x="155" y="222" text-anchor="middle" font-size="10" font-weight="bold" fill="#ffffff">creer_employes.bash (LDAP)</text>
+  <text x="65" y="242" font-size="9" fill="#dcfce7">- Reads CSV from stdin</text>
+  <text x="65" y="258" font-size="9" fill="#dcfce7">- Only processes AD/Local-AD rows</text>
+  <text x="65" y="274" font-size="9" fill="#dcfce7">- Creates group (random GID) if needed</text>
+  <text x="65" y="290" font-size="9" fill="#dcfce7">- ldapadd (create user)</text>
+  <text x="65" y="306" font-size="9" fill="#dcfce7">- ldappasswd (set temp password)</text>
+  <text x="65" y="322" font-size="9" fill="#dcfce7">- ldapmodify (add to group)</text>
+
+  <!-- Local creation -->
+  <rect x="278" y="202" width="198" height="130" rx="5" fill="#15803d" stroke="#166534" stroke-width="1.5"/>
+  <text x="377" y="222" text-anchor="middle" font-size="10" font-weight="bold" fill="#ffffff">creer_clients.bash (local)</text>
+  <text x="293" y="242" font-size="9" fill="#dcfce7">- Reads name pairs from stdin</text>
+  <text x="293" y="258" font-size="9" fill="#dcfce7">- Generates unique username</text>
+  <text x="293" y="274" font-size="9" fill="#dcfce7">- useradd -m (create user)</text>
+  <text x="293" y="290" font-size="9" fill="#dcfce7">- chpasswd (set password)</text>
+  <text x="293" y="306" font-size="9" fill="#dcfce7">- Exit codes: 3=create fail</text>
+  <text x="293" y="322" font-size="9" fill="#dcfce7">  4=password fail</text>
+
+  <!-- Backup script -->
+  <rect x="50" y="348" width="430" height="95" rx="5" fill="#166534" stroke="#14532d" stroke-width="1.5"/>
+  <text x="265" y="368" text-anchor="middle" font-size="10" font-weight="bold" fill="#ffffff">sauvegarde.bash -- Home Directory Backup</text>
+  <text x="65" y="388" font-size="9" fill="#dcfce7">Iterates /etc/passwd  |  Skips UID &lt; 1000 (system accounts)</text>
+  <text x="65" y="404" font-size="9" fill="#dcfce7">Creates timestamped tar.gz in /tmp/sauvegarde/ for each regular user's home dir</text>
+  <text x="65" y="420" font-size="9" fill="#dcfce7">Logs: start / success / skip / failure -- to timestamped .log file</text>
+
+  <!-- ===== WINDOWS SCRIPTS ===== -->
+  <rect x="600" y="170" width="470" height="290" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="835" y="192" text-anchor="middle" font-size="12" font-weight="bold" fill="#1d4ed8">Windows Scripts (PowerShell)</text>
+
+  <!-- AD creation -->
+  <rect x="620" y="202" width="210" height="150" rx="5" fill="#2563eb" stroke="#1d4ed8" stroke-width="1.5"/>
+  <text x="725" y="222" text-anchor="middle" font-size="10" font-weight="bold" fill="#ffffff">creer_employes.ps1 (AD)</text>
+  <text x="635" y="242" font-size="9" fill="#bfdbfe">- Detects domain join status</text>
+  <text x="635" y="258" font-size="9" fill="#bfdbfe">- If domain: New-ADUser</text>
+  <text x="635" y="274" font-size="9" fill="#bfdbfe">  (UPN, email, dept, expiry)</text>
+  <text x="635" y="290" font-size="9" fill="#bfdbfe">- If not: local user fallback</text>
+  <text x="635" y="306" font-size="9" fill="#bfdbfe">- Same username + pwd logic</text>
+  <text x="635" y="322" font-size="9" fill="#bfdbfe">- Win32_ComputerSystem</text>
+  <text x="635" y="338" font-size="9" fill="#bfdbfe">  .PartOfDomain detection</text>
+
+  <!-- Local creation -->
+  <rect x="848" y="202" width="200" height="150" rx="5" fill="#1d4ed8" stroke="#1e3a8a" stroke-width="1.5"/>
+  <text x="948" y="222" text-anchor="middle" font-size="10" font-weight="bold" fill="#ffffff">creer_employes.ps1 (local)</text>
+  <text x="863" y="242" font-size="9" fill="#bfdbfe">- Reads semicolon CSV</text>
+  <text x="863" y="258" font-size="9" fill="#bfdbfe">- New-LocalUser</text>
+  <text x="863" y="274" font-size="9" fill="#bfdbfe">- New-LocalGroup if needed</text>
+  <text x="863" y="290" font-size="9" fill="#bfdbfe">- Add-LocalGroupMember</text>
+  <text x="863" y="306" font-size="9" fill="#bfdbfe">- Force pwd change on login</text>
+  <text x="863" y="322" font-size="9" fill="#bfdbfe">  net user /logonpasswordchg</text>
+  <text x="863" y="338" font-size="9" fill="#bfdbfe">- Handles contract expiry</text>
+
+  <!-- Deactivate script -->
+  <rect x="620" y="368" width="430" height="75" rx="5" fill="#1e3a8a" stroke="#172554" stroke-width="1.5"/>
+  <text x="835" y="388" text-anchor="middle" font-size="10" font-weight="bold" fill="#ffffff">desact_employe.ps1 -- User Deactivation</text>
+  <text x="635" y="408" font-size="9" fill="#bfdbfe">Params: -PrenomEmploye, -NomEmploye, -NoEmploye</text>
+  <text x="635" y="424" font-size="9" fill="#bfdbfe">Searches by description (employee number) + full name match  |  Calls Disable-LocalUser</text>
+
+  <!-- Legend -->
+  <rect x="30" y="478" width="1040" height="85" rx="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="550" y="498" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e293b">Username Generation (all scripts)</text>
+  <text x="550" y="518" text-anchor="middle" font-size="10" fill="#334155">1. Take first initial + full last name  (e.g. jdoe)</text>
+  <text x="550" y="536" text-anchor="middle" font-size="10" fill="#334155">2. If collision: prepend letters until unique  (e.g. ajdoe, bajdoe)</text>
+  <text x="550" y="554" text-anchor="middle" font-size="10" fill="#334155">Temp password: word_list_word + symbol + last 3 digits of employee number  (e.g. forest#456)</text>
+
 </svg>
