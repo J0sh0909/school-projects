@@ -16,7 +16,7 @@ Infrastructure AWS multi-comptes déployant Mattermost, Nextcloud, GLPI et une b
 
 ## Vue d'ensemble de l'architecture
 
-<img width="800" height="706" alt="image" src="https://github.com/user-attachments/assets/2b1f301b-47e2-4e2b-a717-f2ac12efd0e8" />
+![Architecture Diagram](./architecture-aws-final.svg)
 
 
 **Compte A (us-east-1a)** héberge la couche applicative :
@@ -95,7 +95,7 @@ Multi-account AWS infrastructure deploying Mattermost, Nextcloud, GLPI, and a ma
 
 ## Architecture overview
 
-<img width="800" height="706" alt="image" src="https://github.com/user-attachments/assets/2b1f301b-47e2-4e2b-a717-f2ac12efd0e8" />
+![Architecture Diagram](./architecture-aws-final.svg)
 
 
 **Account A (us-east-1a)** hosts the application layer:

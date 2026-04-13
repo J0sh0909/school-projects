@@ -15,7 +15,7 @@ Déploiement Terraform en une seule commande d'un gestionnaire de mots de passe 
 
 ## Vue d'ensemble de l'architecture
 
-<img width="800" height="612" alt="image" src="https://github.com/user-attachments/assets/8806260a-d1a9-436a-bbfc-a6e687f9ded4" />
+![Architecture Diagram](./architecture-aws-tf.svg)
 
 
 **Ce que Terraform provisionne :**
@@ -97,7 +97,7 @@ Single-command Terraform deployment of a self-hosted [Vaultwarden](https://githu
 
 ## Architecture overview
 
-<img width="800" height="612" alt="image" src="https://github.com/user-attachments/assets/8806260a-d1a9-436a-bbfc-a6e687f9ded4" />
+![Architecture Diagram](./architecture-aws-tf.svg)
 
 
 **What Terraform provisions:**
