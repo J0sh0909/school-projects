@@ -1,1 +1,399 @@
-<svg id="container" width="1072.71875" xmlns="http://www.w3.org/2000/svg" class="flowchart" height="957.40625" viewBox="0 0 1072.71875 957.40625" role="graphics-document document" aria-roledescription="flowchart-v2"><style>#container{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#container .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#container .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#container .error-icon{fill:#552222;}#container .error-text{fill:#552222;stroke:#552222;}#container .edge-thickness-normal{stroke-width:1px;}#container .edge-thickness-thick{stroke-width:3.5px;}#container .edge-pattern-solid{stroke-dasharray:0;}#container .edge-thickness-invisible{stroke-width:0;fill:none;}#container .edge-pattern-dashed{stroke-dasharray:3;}#container .edge-pattern-dotted{stroke-dasharray:2;}#container .marker{fill:#333333;stroke:#333333;}#container .marker.cross{stroke:#333333;}#container svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#container p{margin:0;}#container .label{font-family:"trebuchet ms",verdana,arial,sans-serif;color:#333;}#container .cluster-label text{fill:#333;}#container .cluster-label span{color:#333;}#container .cluster-label span p{background-color:transparent;}#container .label text,#container span{fill:#333;color:#333;}#container .node rect,#container .node circle,#container .node ellipse,#container .node polygon,#container .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#container .rough-node .label text,#container .node .label text,#container .image-shape .label,#container .icon-shape .label{text-anchor:middle;}#container .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#container .rough-node .label,#container .node .label,#container .image-shape .label,#container .icon-shape .label{text-align:center;}#container .node.clickable{cursor:pointer;}#container .root .anchor path{fill:#333333!important;stroke-width:0;stroke:#333333;}#container .arrowheadPath{fill:#333333;}#container .edgePath .path{stroke:#333333;stroke-width:2.0px;}#container .flowchart-link{stroke:#333333;fill:none;}#container .edgeLabel{background-color:rgba(232,232,232, 0.8);text-align:center;}#container .edgeLabel p{background-color:rgba(232,232,232, 0.8);}#container .edgeLabel rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#container .labelBkg{background-color:rgba(232, 232, 232, 0.5);}#container .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#container .cluster text{fill:#333;}#container .cluster span{color:#333;}#container div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#container .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#container rect.text{fill:none;stroke-width:0;}#container .icon-shape,#container .image-shape{background-color:rgba(232,232,232, 0.8);text-align:center;}#container .icon-shape p,#container .image-shape p{background-color:rgba(232,232,232, 0.8);padding:2px;}#container .icon-shape rect,#container .image-shape rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#container .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#container .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#container :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker id="container_flowchart-v2-pointEnd" class="marker flowchart-v2" viewBox="0 0 10 10" refX="5" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker id="container_flowchart-v2-pointStart" class="marker flowchart-v2" viewBox="0 0 10 10" refX="4.5" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 5 L 10 10 L 10 0 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker id="container_flowchart-v2-circleEnd" class="marker flowchart-v2" viewBox="0 0 10 10" refX="11" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker id="container_flowchart-v2-circleStart" class="marker flowchart-v2" viewBox="0 0 10 10" refX="-1" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker id="container_flowchart-v2-crossEnd" class="marker cross flowchart-v2" viewBox="0 0 11 11" refX="12" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker id="container_flowchart-v2-crossStart" class="marker cross flowchart-v2" viewBox="0 0 11 11" refX="-1" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path d="M538.23,81.406L538.23,85.573C538.23,89.74,538.23,98.073,538.23,105.74C538.23,113.406,538.23,120.406,538.23,123.906L538.23,127.406" id="L_Internet_pfSense_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_Internet_pfSense_0" data-points="W3sieCI6NTM4LjIzMDQ2ODc1LCJ5Ijo4MS40MDYyNX0seyJ4Ijo1MzguMjMwNDY4NzUsInkiOjEwNi40MDYyNX0seyJ4Ijo1MzguMjMwNDY4NzUsInkiOjEzMS40MDYyNX1d" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M479.293,183.389L468.67,187.892C458.047,192.395,436.801,201.4,426.178,209.403C415.555,217.406,415.555,224.406,415.555,227.906L415.555,231.406" id="L_pfSense_Bastion_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_pfSense_Bastion_0" data-points="W3sieCI6NDc5LjI5Mjk2ODc1LCJ5IjoxODMuMzg4NzY4NzA3MjEyMjJ9LHsieCI6NDE1LjU1NDY4NzUsInkiOjIxMC40MDYyNX0seyJ4Ijo0MTUuNTU0Njg3NSwieSI6MjM1LjQwNjI1fV0=" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M597.168,183.389L607.791,187.892C618.414,192.395,639.66,201.4,650.283,209.403C660.906,217.406,660.906,224.406,660.906,227.906L660.906,231.406" id="L_pfSense_Traefik_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_pfSense_Traefik_0" data-points="W3sieCI6NTk3LjE2Nzk2ODc1LCJ5IjoxODMuMzg4NzY4NzA3MjEyMjJ9LHsieCI6NjYwLjkwNjI1LCJ5IjoyMTAuNDA2MjV9LHsieCI6NjYwLjkwNjI1LCJ5IjoyMzUuNDA2MjV9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M660.906,289.406L660.906,293.573C660.906,297.74,660.906,306.073,660.906,313.74C660.906,321.406,660.906,328.406,660.906,331.906L660.906,335.406" id="L_Traefik_MetalLB_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_Traefik_MetalLB_0" data-points="W3sieCI6NjYwLjkwNjI1LCJ5IjoyODkuNDA2MjV9LHsieCI6NjYwLjkwNjI1LCJ5IjozMTQuNDA2MjV9LHsieCI6NjYwLjkwNjI1LCJ5IjozMzkuNDA2MjV9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M660.906,393.406L660.906,397.573C660.906,401.74,660.906,410.073,660.906,417.74C660.906,425.406,660.906,432.406,660.906,435.906L660.906,439.406" id="L_MetalLB_K3S_Cluster_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_MetalLB_K3S_Cluster_0" data-points="W3sieCI6NjYwLjkwNjI1LCJ5IjozOTMuNDA2MjV9LHsieCI6NjYwLjkwNjI1LCJ5Ijo0MTguNDA2MjV9LHsieCI6NjYwLjkwNjI1LCJ5Ijo0NDMuNDA2MjV9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M433.989,671.406L425.695,675.573C417.402,679.74,400.814,688.073,392.52,695.74C384.227,703.406,384.227,710.406,384.227,713.906L384.227,717.406" id="L_K3S_Cluster_Monitoring_Stack_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_K3S_Cluster_Monitoring_Stack_0" data-points="W3sieCI6NDMzLjk4OTA5NjIyMzAyMTYsInkiOjY3MS40MDYyNX0seyJ4IjozODQuMjI2NTYyNSwieSI6Njk2LjQwNjI1fSx7IngiOjM4NC4yMjY1NjI1LCJ5Ijo3MjEuNDA2MjV9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M887.823,671.406L896.117,675.573C904.411,679.74,920.998,688.073,929.292,704.406C937.586,720.74,937.586,745.073,937.586,757.24L937.586,769.406" id="L_K3S_Cluster_Apps_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_K3S_Cluster_Apps_0" data-points="W3sieCI6ODg3LjgyMzQwMzc3Njk3ODUsInkiOjY3MS40MDYyNX0seyJ4Ijo5MzcuNTg1OTM3NSwieSI6Njk2LjQwNjI1fSx7IngiOjkzNy41ODU5Mzc1LCJ5Ijo3NzMuNDA2MjV9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" data-id="L_Internet_pfSense_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_pfSense_Bastion_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_pfSense_Traefik_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_Traefik_MetalLB_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_MetalLB_K3S_Cluster_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_K3S_Cluster_Monitoring_Stack_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_K3S_Cluster_Apps_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g></g><g class="nodes"><g class="root" transform="translate(802.453125, 765.40625)"><g class="clusters"><g class="cluster" id="Apps" data-look="classic"><rect style="" x="8" y="8" width="254.265625" height="124"></rect><g class="cluster-label" transform="translate(117.3046875, 8)"><foreignObject width="35.65625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>Apps</p></span></div></foreignObject></g></g></g><g class="edgePaths"></g><g class="edgeLabels"></g><g class="nodes"><g class="node default" id="flowchart-GLPI-28" transform="translate(135.1328125, 70)"><rect class="basic label-container" style="" x="-89.6328125" y="-27" width="179.265625" height="54"></rect><g class="label" style="" transform="translate(-59.6328125, -12)"><rect></rect><foreignObject width="119.265625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>GLPI Asset Mgmt</p></span></div></foreignObject></g></g></g></g><g class="root" transform="translate(0, 713.40625)"><g class="clusters"><g class="cluster" id="Monitoring_Stack" data-look="classic"><rect style="" x="8" y="8" width="752.453125" height="228"></rect><g class="cluster-label" transform="translate(323.1640625, 8)"><foreignObject width="122.125" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>Monitoring Stack</p></span></div></foreignObject></g></g></g><g class="edgePaths"><path d="M437.016,70L444.763,70C452.51,70,468.005,70,481.336,70C494.667,70,505.833,70,511.417,70L517,70" id="L_Prom_AM_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_Prom_AM_0" data-points="W3sieCI6NDM3LjAxNTYyNSwieSI6NzB9LHsieCI6NDgzLjUsInkiOjcwfSx7IngiOjUyMSwieSI6NzB9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M153.253,95L160.914,90.833C168.575,86.667,183.897,78.333,198.638,74.167C213.38,70,227.542,70,234.622,70L241.703,70" id="L_Graf_Prom_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_Graf_Prom_0" data-points="W3sieCI6MTUzLjI1MjcwNDMyNjkyMzEsInkiOjk1fSx7IngiOjE5OS4yMTg3NSwieSI6NzB9LHsieCI6MjQ1LjcwMzEyNSwieSI6NzB9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M153.253,149L160.914,153.167C168.575,157.333,183.897,165.667,197.141,169.833C210.385,174,221.552,174,227.135,174L232.719,174" id="L_Graf_Loki_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_Graf_Loki_0" data-points="W3sieCI6MTUzLjI1MjcwNDMyNjkyMzEsInkiOjE0OX0seyJ4IjoxOTkuMjE4NzUsInkiOjE3NH0seyJ4IjoyMzYuNzE4NzUsInkiOjE3NH1d" marker-end="url(#container_flowchart-v2-pointEnd)"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" data-id="L_Prom_AM_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_Graf_Prom_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_Graf_Loki_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g></g><g class="nodes"><g class="node default" id="flowchart-Prom-18" transform="translate(341.359375, 70)"><rect class="basic label-container" style="" x="-95.65625" y="-27" width="191.3125" height="54"></rect><g class="label" style="" transform="translate(-65.65625, -12)"><rect></rect><foreignObject width="131.3125" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>Prometheus HA x2</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-AM-19" transform="translate(621.9765625, 70)"><rect class="basic label-container" style="" x="-100.9765625" y="-27" width="201.953125" height="54"></rect><g class="label" style="" transform="translate(-70.9765625, -12)"><rect></rect><foreignObject width="141.953125" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>Alertmanager HA x2</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-Graf-20" transform="translate(103.609375, 122)"><rect class="basic label-container" style="" x="-58.109375" y="-27" width="116.21875" height="54"></rect><g class="label" style="" transform="translate(-28.109375, -12)"><rect></rect><foreignObject width="56.21875" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>Grafana</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-Loki-21" transform="translate(341.359375, 174)"><rect class="basic label-container" style="" x="-104.640625" y="-27" width="209.28125" height="54"></rect><g class="label" style="" transform="translate(-74.640625, -12)"><rect></rect><foreignObject width="149.28125" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>Loki Log Aggregation</p></span></div></foreignObject></g></g></g></g><g class="root" transform="translate(272.6328125, 435.40625)"><g class="clusters"><g class="cluster" id="K3S_Cluster" data-look="classic"><rect style="" x="8" y="8" width="760.546875" height="228"></rect><g class="cluster-label" transform="translate(347.734375, 8)"><foreignObject width="81.078125" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>K3S Cluster</p></span></div></foreignObject></g></g></g><g class="edgePaths"><path d="M211.859,70L218.109,70C224.359,70,236.859,70,249.359,70C261.859,70,274.359,70,280.609,70L286.859,70" id="L_S1_W1_0" class="edge-thickness-normal edge-pattern-dotted edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_S1_W1_0" data-points="W3sieCI6MjExLjg1OTM3NSwieSI6NzB9LHsieCI6MjQ5LjM1OTM3NSwieSI6NzB9LHsieCI6Mjg2Ljg1OTM3NSwieSI6NzB9XQ=="></path><path d="M468.375,70L474.625,70C480.875,70,493.375,70,505.208,70C517.042,70,528.208,70,533.792,70L539.375,70" id="L_W1_LH_0" class="edge-thickness-normal edge-pattern-dotted edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_W1_LH_0" data-points="W3sieCI6NDY4LjM3NSwieSI6NzB9LHsieCI6NTA1Ljg3NSwieSI6NzB9LHsieCI6NTQzLjM3NSwieSI6NzB9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" data-id="L_S1_W1_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_W1_LH_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g></g><g class="nodes"><g class="node default" id="flowchart-S1-8" transform="translate(128.6796875, 70)"><rect class="basic label-container" style="" x="-83.1796875" y="-27" width="166.359375" height="54"></rect><g class="label" style="" transform="translate(-53.1796875, -12)"><rect></rect><foreignObject width="106.359375" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>Server 1-3 etcd</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-W1-9" transform="translate(377.6171875, 70)"><rect class="basic label-container" style="" x="-90.7578125" y="-27" width="181.515625" height="54"></rect><g class="label" style="" transform="translate(-60.7578125, -12)"><rect></rect><foreignObject width="121.515625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>Agent 1-3 Worker</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-LH-12" transform="translate(637.2109375, 70)"><rect class="basic label-container" style="" x="-93.8359375" y="-27" width="187.671875" height="54"></rect><g class="label" style="" transform="translate(-63.8359375, -12)"><rect></rect><foreignObject width="127.671875" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>Longhorn Storage</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-Trivy-13" transform="translate(637.2109375, 174)"><rect class="basic label-container" style="" x="-78.515625" y="-27" width="157.03125" height="54"></rect><g class="label" style="" transform="translate(-48.515625, -12)"><rect></rect><foreignObject width="97.03125" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>Trivy Scanner</p></span></div></foreignObject></g></g></g></g><g class="node default" id="flowchart-Internet-0" transform="translate(538.23046875, 44.703125)"><circle class="basic label-container" style="" r="36.703125" cx="0" cy="0"></circle><g class="label" style="" transform="translate(-29.203125, -12)"><rect></rect><foreignObject width="58.40625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>Internet</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-pfSense-1" transform="translate(538.23046875, 158.40625)"><rect class="basic label-container" style="" x="-58.9375" y="-27" width="117.875" height="54"></rect><g class="label" style="" transform="translate(-28.9375, -12)"><rect></rect><foreignObject width="57.875" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>pfSense</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-Bastion-3" transform="translate(415.5546875, 262.40625)"><rect class="basic label-container" style="" x="-103.34375" y="-27" width="206.6875" height="54"></rect><g class="label" style="" transform="translate(-73.34375, -12)"><rect></rect><foreignObject width="146.6875" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>Bastion VM Tailscale</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-Traefik-5" transform="translate(660.90625, 262.40625)"><rect class="basic label-container" style="" x="-92.0078125" y="-27" width="184.015625" height="54"></rect><g class="label" style="" transform="translate(-62.0078125, -12)"><rect></rect><foreignObject width="124.015625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>Traefik Ingress x2</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-MetalLB-7" transform="translate(660.90625, 366.40625)"><rect class="basic label-container" style="" x="-58.8828125" y="-27" width="117.765625" height="54"></rect><g class="label" style="" transform="translate(-28.8828125, -12)"><rect></rect><foreignObject width="57.765625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>MetalLB</p></span></div></foreignObject></g></g></g></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:html="http://www.w3.org/1999/xhtml" id="container" width="1072.71875" class="flowchart" height="957.40625" viewBox="0 0 1072.71875 957.40625" role="graphics-document document" aria-roledescription="flowchart-v2">
+  <rect x="0.0" y="0.0" width="1072.71875" height="957.40625" fill="white"/>
+  <style>#container{font-family:&quot;trebuchet ms&quot;,verdana,arial,sans-serif;font-size:16px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#container .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#container .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#container .error-icon{fill:#552222;}#container .error-text{fill:#552222;stroke:#552222;}#container .edge-thickness-normal{stroke-width:1px;}#container .edge-thickness-thick{stroke-width:3.5px;}#container .edge-pattern-solid{stroke-dasharray:0;}#container .edge-thickness-invisible{stroke-width:0;fill:none;}#container .edge-pattern-dashed{stroke-dasharray:3;}#container .edge-pattern-dotted{stroke-dasharray:2;}#container .marker{fill:#333333;stroke:#333333;}#container .marker.cross{stroke:#333333;}#container svg{font-family:&quot;trebuchet ms&quot;,verdana,arial,sans-serif;font-size:16px;}#container p{margin:0;}#container .label{font-family:&quot;trebuchet ms&quot;,verdana,arial,sans-serif;color:#333;}#container .cluster-label text{fill:#333;}#container .cluster-label span{color:#333;}#container .cluster-label span p{background-color:transparent;}#container .label text,#container span{fill:#333;color:#333;}#container .node rect,#container .node circle,#container .node ellipse,#container .node polygon,#container .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#container .rough-node .label text,#container .node .label text,#container .image-shape .label,#container .icon-shape .label{text-anchor:middle;}#container .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#container .rough-node .label,#container .node .label,#container .image-shape .label,#container .icon-shape .label{text-align:center;}#container .node.clickable{cursor:pointer;}#container .root .anchor path{fill:#333333!important;stroke-width:0;stroke:#333333;}#container .arrowheadPath{fill:#333333;}#container .edgePath .path{stroke:#333333;stroke-width:2.0px;}#container .flowchart-link{stroke:#333333;fill:none;}#container .edgeLabel{background-color:rgba(232,232,232, 0.8);text-align:center;}#container .edgeLabel p{background-color:rgba(232,232,232, 0.8);}#container .edgeLabel rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#container .labelBkg{background-color:rgba(232, 232, 232, 0.5);}#container .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#container .cluster text{fill:#333;}#container .cluster span{color:#333;}#container div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:&quot;trebuchet ms&quot;,verdana,arial,sans-serif;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#container .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#container rect.text{fill:none;stroke-width:0;}#container .icon-shape,#container .image-shape{background-color:rgba(232,232,232, 0.8);text-align:center;}#container .icon-shape p,#container .image-shape p{background-color:rgba(232,232,232, 0.8);padding:2px;}#container .icon-shape rect,#container .image-shape rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#container .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#container .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#container :root{--mermaid-font-family:&quot;trebuchet ms&quot;,verdana,arial,sans-serif;}</style>
+  <g>
+    <marker id="container_flowchart-v2-pointEnd" class="marker flowchart-v2" viewBox="0 0 10 10" refX="5" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/>
+    </marker>
+    <marker id="container_flowchart-v2-pointStart" class="marker flowchart-v2" viewBox="0 0 10 10" refX="4.5" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 5 L 10 10 L 10 0 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/>
+    </marker>
+    <marker id="container_flowchart-v2-circleEnd" class="marker flowchart-v2" viewBox="0 0 10 10" refX="11" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto">
+      <circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/>
+    </marker>
+    <marker id="container_flowchart-v2-circleStart" class="marker flowchart-v2" viewBox="0 0 10 10" refX="-1" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto">
+      <circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/>
+    </marker>
+    <marker id="container_flowchart-v2-crossEnd" class="marker cross flowchart-v2" viewBox="0 0 11 11" refX="12" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto">
+      <path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"/>
+    </marker>
+    <marker id="container_flowchart-v2-crossStart" class="marker cross flowchart-v2" viewBox="0 0 11 11" refX="-1" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto">
+      <path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"/>
+    </marker>
+    <g class="root">
+      <g class="clusters"/>
+      <g class="edgePaths">
+        <path d="M538.23,81.406L538.23,85.573C538.23,89.74,538.23,98.073,538.23,105.74C538.23,113.406,538.23,120.406,538.23,123.906L538.23,127.406" id="L_Internet_pfSense_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_Internet_pfSense_0" data-points="W3sieCI6NTM4LjIzMDQ2ODc1LCJ5Ijo4MS40MDYyNX0seyJ4Ijo1MzguMjMwNDY4NzUsInkiOjEwNi40MDYyNX0seyJ4Ijo1MzguMjMwNDY4NzUsInkiOjEzMS40MDYyNX1d" marker-end="url(#container_flowchart-v2-pointEnd)"/>
+        <path d="M479.293,183.389L468.67,187.892C458.047,192.395,436.801,201.4,426.178,209.403C415.555,217.406,415.555,224.406,415.555,227.906L415.555,231.406" id="L_pfSense_Bastion_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_pfSense_Bastion_0" data-points="W3sieCI6NDc5LjI5Mjk2ODc1LCJ5IjoxODMuMzg4NzY4NzA3MjEyMjJ9LHsieCI6NDE1LjU1NDY4NzUsInkiOjIxMC40MDYyNX0seyJ4Ijo0MTUuNTU0Njg3NSwieSI6MjM1LjQwNjI1fV0=" marker-end="url(#container_flowchart-v2-pointEnd)"/>
+        <path d="M597.168,183.389L607.791,187.892C618.414,192.395,639.66,201.4,650.283,209.403C660.906,217.406,660.906,224.406,660.906,227.906L660.906,231.406" id="L_pfSense_Traefik_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_pfSense_Traefik_0" data-points="W3sieCI6NTk3LjE2Nzk2ODc1LCJ5IjoxODMuMzg4NzY4NzA3MjEyMjJ9LHsieCI6NjYwLjkwNjI1LCJ5IjoyMTAuNDA2MjV9LHsieCI6NjYwLjkwNjI1LCJ5IjoyMzUuNDA2MjV9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"/>
+        <path d="M660.906,289.406L660.906,293.573C660.906,297.74,660.906,306.073,660.906,313.74C660.906,321.406,660.906,328.406,660.906,331.906L660.906,335.406" id="L_Traefik_MetalLB_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_Traefik_MetalLB_0" data-points="W3sieCI6NjYwLjkwNjI1LCJ5IjoyODkuNDA2MjV9LHsieCI6NjYwLjkwNjI1LCJ5IjozMTQuNDA2MjV9LHsieCI6NjYwLjkwNjI1LCJ5IjozMzkuNDA2MjV9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"/>
+        <path d="M660.906,393.406L660.906,397.573C660.906,401.74,660.906,410.073,660.906,417.74C660.906,425.406,660.906,432.406,660.906,435.906L660.906,439.406" id="L_MetalLB_K3S_Cluster_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_MetalLB_K3S_Cluster_0" data-points="W3sieCI6NjYwLjkwNjI1LCJ5IjozOTMuNDA2MjV9LHsieCI6NjYwLjkwNjI1LCJ5Ijo0MTguNDA2MjV9LHsieCI6NjYwLjkwNjI1LCJ5Ijo0NDMuNDA2MjV9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"/>
+        <path d="M433.989,671.406L425.695,675.573C417.402,679.74,400.814,688.073,392.52,695.74C384.227,703.406,384.227,710.406,384.227,713.906L384.227,717.406" id="L_K3S_Cluster_Monitoring_Stack_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_K3S_Cluster_Monitoring_Stack_0" data-points="W3sieCI6NDMzLjk4OTA5NjIyMzAyMTYsInkiOjY3MS40MDYyNX0seyJ4IjozODQuMjI2NTYyNSwieSI6Njk2LjQwNjI1fSx7IngiOjM4NC4yMjY1NjI1LCJ5Ijo3MjEuNDA2MjV9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"/>
+        <path d="M887.823,671.406L896.117,675.573C904.411,679.74,920.998,688.073,929.292,704.406C937.586,720.74,937.586,745.073,937.586,757.24L937.586,769.406" id="L_K3S_Cluster_Apps_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_K3S_Cluster_Apps_0" data-points="W3sieCI6ODg3LjgyMzQwMzc3Njk3ODUsInkiOjY3MS40MDYyNX0seyJ4Ijo5MzcuNTg1OTM3NSwieSI6Njk2LjQwNjI1fSx7IngiOjkzNy41ODU5Mzc1LCJ5Ijo3NzMuNDA2MjV9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"/>
+      </g>
+      <g class="edgeLabels">
+        <g class="edgeLabel">
+          <g class="label" data-id="L_Internet_pfSense_0" transform="translate(0, 0)">
+            <foreignObject width="0" height="0">
+              <html:div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                <html:span class="edgeLabel"/>
+              </html:div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="edgeLabel">
+          <g class="label" data-id="L_pfSense_Bastion_0" transform="translate(0, 0)">
+            <foreignObject width="0" height="0">
+              <html:div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                <html:span class="edgeLabel"/>
+              </html:div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="edgeLabel">
+          <g class="label" data-id="L_pfSense_Traefik_0" transform="translate(0, 0)">
+            <foreignObject width="0" height="0">
+              <html:div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                <html:span class="edgeLabel"/>
+              </html:div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="edgeLabel">
+          <g class="label" data-id="L_Traefik_MetalLB_0" transform="translate(0, 0)">
+            <foreignObject width="0" height="0">
+              <html:div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                <html:span class="edgeLabel"/>
+              </html:div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="edgeLabel">
+          <g class="label" data-id="L_MetalLB_K3S_Cluster_0" transform="translate(0, 0)">
+            <foreignObject width="0" height="0">
+              <html:div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                <html:span class="edgeLabel"/>
+              </html:div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="edgeLabel">
+          <g class="label" data-id="L_K3S_Cluster_Monitoring_Stack_0" transform="translate(0, 0)">
+            <foreignObject width="0" height="0">
+              <html:div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                <html:span class="edgeLabel"/>
+              </html:div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="edgeLabel">
+          <g class="label" data-id="L_K3S_Cluster_Apps_0" transform="translate(0, 0)">
+            <foreignObject width="0" height="0">
+              <html:div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                <html:span class="edgeLabel"/>
+              </html:div>
+            </foreignObject>
+          </g>
+        </g>
+      </g>
+      <g class="nodes">
+        <g class="root" transform="translate(802.453125, 765.40625)">
+          <g class="clusters">
+            <g class="cluster" id="Apps" data-look="classic">
+              <rect style="" x="8" y="8" width="254.265625" height="124"/>
+              <g class="cluster-label" transform="translate(117.3046875, 8)">
+                <foreignObject width="35.65625" height="24">
+                  <html:div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                    <html:span class="nodeLabel">
+                      <html:p>Apps</html:p>
+                    </html:span>
+                  </html:div>
+                </foreignObject>
+              </g>
+            </g>
+          </g>
+          <g class="edgePaths"/>
+          <g class="edgeLabels"/>
+          <g class="nodes">
+            <g class="node default" id="flowchart-GLPI-28" transform="translate(135.1328125, 70)">
+              <rect class="basic label-container" style="" x="-89.6328125" y="-27" width="179.265625" height="54"/>
+              <g class="label" style="" transform="translate(-59.6328125, -12)">
+                <rect/>
+                <foreignObject width="119.265625" height="24">
+                  <html:div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                    <html:span class="nodeLabel">
+                      <html:p>GLPI Asset Mgmt</html:p>
+                    </html:span>
+                  </html:div>
+                </foreignObject>
+              </g>
+            </g>
+          </g>
+        </g>
+        <g class="root" transform="translate(0, 713.40625)">
+          <g class="clusters">
+            <g class="cluster" id="Monitoring_Stack" data-look="classic">
+              <rect style="" x="8" y="8" width="752.453125" height="228"/>
+              <g class="cluster-label" transform="translate(323.1640625, 8)">
+                <foreignObject width="122.125" height="24">
+                  <html:div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                    <html:span class="nodeLabel">
+                      <html:p>Monitoring Stack</html:p>
+                    </html:span>
+                  </html:div>
+                </foreignObject>
+              </g>
+            </g>
+          </g>
+          <g class="edgePaths">
+            <path d="M437.016,70L444.763,70C452.51,70,468.005,70,481.336,70C494.667,70,505.833,70,511.417,70L517,70" id="L_Prom_AM_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_Prom_AM_0" data-points="W3sieCI6NDM3LjAxNTYyNSwieSI6NzB9LHsieCI6NDgzLjUsInkiOjcwfSx7IngiOjUyMSwieSI6NzB9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"/>
+            <path d="M153.253,95L160.914,90.833C168.575,86.667,183.897,78.333,198.638,74.167C213.38,70,227.542,70,234.622,70L241.703,70" id="L_Graf_Prom_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_Graf_Prom_0" data-points="W3sieCI6MTUzLjI1MjcwNDMyNjkyMzEsInkiOjk1fSx7IngiOjE5OS4yMTg3NSwieSI6NzB9LHsieCI6MjQ1LjcwMzEyNSwieSI6NzB9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"/>
+            <path d="M153.253,149L160.914,153.167C168.575,157.333,183.897,165.667,197.141,169.833C210.385,174,221.552,174,227.135,174L232.719,174" id="L_Graf_Loki_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_Graf_Loki_0" data-points="W3sieCI6MTUzLjI1MjcwNDMyNjkyMzEsInkiOjE0OX0seyJ4IjoxOTkuMjE4NzUsInkiOjE3NH0seyJ4IjoyMzYuNzE4NzUsInkiOjE3NH1d" marker-end="url(#container_flowchart-v2-pointEnd)"/>
+          </g>
+          <g class="edgeLabels">
+            <g class="edgeLabel">
+              <g class="label" data-id="L_Prom_AM_0" transform="translate(0, 0)">
+                <foreignObject width="0" height="0">
+                  <html:div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                    <html:span class="edgeLabel"/>
+                  </html:div>
+                </foreignObject>
+              </g>
+            </g>
+            <g class="edgeLabel">
+              <g class="label" data-id="L_Graf_Prom_0" transform="translate(0, 0)">
+                <foreignObject width="0" height="0">
+                  <html:div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                    <html:span class="edgeLabel"/>
+                  </html:div>
+                </foreignObject>
+              </g>
+            </g>
+            <g class="edgeLabel">
+              <g class="label" data-id="L_Graf_Loki_0" transform="translate(0, 0)">
+                <foreignObject width="0" height="0">
+                  <html:div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                    <html:span class="edgeLabel"/>
+                  </html:div>
+                </foreignObject>
+              </g>
+            </g>
+          </g>
+          <g class="nodes">
+            <g class="node default" id="flowchart-Prom-18" transform="translate(341.359375, 70)">
+              <rect class="basic label-container" style="" x="-95.65625" y="-27" width="191.3125" height="54"/>
+              <g class="label" style="" transform="translate(-65.65625, -12)">
+                <rect/>
+                <foreignObject width="131.3125" height="24">
+                  <html:div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                    <html:span class="nodeLabel">
+                      <html:p>Prometheus HA x2</html:p>
+                    </html:span>
+                  </html:div>
+                </foreignObject>
+              </g>
+            </g>
+            <g class="node default" id="flowchart-AM-19" transform="translate(621.9765625, 70)">
+              <rect class="basic label-container" style="" x="-100.9765625" y="-27" width="201.953125" height="54"/>
+              <g class="label" style="" transform="translate(-70.9765625, -12)">
+                <rect/>
+                <foreignObject width="141.953125" height="24">
+                  <html:div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                    <html:span class="nodeLabel">
+                      <html:p>Alertmanager HA x2</html:p>
+                    </html:span>
+                  </html:div>
+                </foreignObject>
+              </g>
+            </g>
+            <g class="node default" id="flowchart-Graf-20" transform="translate(103.609375, 122)">
+              <rect class="basic label-container" style="" x="-58.109375" y="-27" width="116.21875" height="54"/>
+              <g class="label" style="" transform="translate(-28.109375, -12)">
+                <rect/>
+                <foreignObject width="56.21875" height="24">
+                  <html:div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                    <html:span class="nodeLabel">
+                      <html:p>Grafana</html:p>
+                    </html:span>
+                  </html:div>
+                </foreignObject>
+              </g>
+            </g>
+            <g class="node default" id="flowchart-Loki-21" transform="translate(341.359375, 174)">
+              <rect class="basic label-container" style="" x="-104.640625" y="-27" width="209.28125" height="54"/>
+              <g class="label" style="" transform="translate(-74.640625, -12)">
+                <rect/>
+                <foreignObject width="149.28125" height="24">
+                  <html:div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                    <html:span class="nodeLabel">
+                      <html:p>Loki Log Aggregation</html:p>
+                    </html:span>
+                  </html:div>
+                </foreignObject>
+              </g>
+            </g>
+          </g>
+        </g>
+        <g class="root" transform="translate(272.6328125, 435.40625)">
+          <g class="clusters">
+            <g class="cluster" id="K3S_Cluster" data-look="classic">
+              <rect style="" x="8" y="8" width="760.546875" height="228"/>
+              <g class="cluster-label" transform="translate(347.734375, 8)">
+                <foreignObject width="81.078125" height="24">
+                  <html:div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                    <html:span class="nodeLabel">
+                      <html:p>K3S Cluster</html:p>
+                    </html:span>
+                  </html:div>
+                </foreignObject>
+              </g>
+            </g>
+          </g>
+          <g class="edgePaths">
+            <path d="M211.859,70L218.109,70C224.359,70,236.859,70,249.359,70C261.859,70,274.359,70,280.609,70L286.859,70" id="L_S1_W1_0" class="edge-thickness-normal edge-pattern-dotted edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_S1_W1_0" data-points="W3sieCI6MjExLjg1OTM3NSwieSI6NzB9LHsieCI6MjQ5LjM1OTM3NSwieSI6NzB9LHsieCI6Mjg2Ljg1OTM3NSwieSI6NzB9XQ=="/>
+            <path d="M468.375,70L474.625,70C480.875,70,493.375,70,505.208,70C517.042,70,528.208,70,533.792,70L539.375,70" id="L_W1_LH_0" class="edge-thickness-normal edge-pattern-dotted edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_W1_LH_0" data-points="W3sieCI6NDY4LjM3NSwieSI6NzB9LHsieCI6NTA1Ljg3NSwieSI6NzB9LHsieCI6NTQzLjM3NSwieSI6NzB9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"/>
+          </g>
+          <g class="edgeLabels">
+            <g class="edgeLabel">
+              <g class="label" data-id="L_S1_W1_0" transform="translate(0, 0)">
+                <foreignObject width="0" height="0">
+                  <html:div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                    <html:span class="edgeLabel"/>
+                  </html:div>
+                </foreignObject>
+              </g>
+            </g>
+            <g class="edgeLabel">
+              <g class="label" data-id="L_W1_LH_0" transform="translate(0, 0)">
+                <foreignObject width="0" height="0">
+                  <html:div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                    <html:span class="edgeLabel"/>
+                  </html:div>
+                </foreignObject>
+              </g>
+            </g>
+          </g>
+          <g class="nodes">
+            <g class="node default" id="flowchart-S1-8" transform="translate(128.6796875, 70)">
+              <rect class="basic label-container" style="" x="-83.1796875" y="-27" width="166.359375" height="54"/>
+              <g class="label" style="" transform="translate(-53.1796875, -12)">
+                <rect/>
+                <foreignObject width="106.359375" height="24">
+                  <html:div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                    <html:span class="nodeLabel">
+                      <html:p>Server 1-3 etcd</html:p>
+                    </html:span>
+                  </html:div>
+                </foreignObject>
+              </g>
+            </g>
+            <g class="node default" id="flowchart-W1-9" transform="translate(377.6171875, 70)">
+              <rect class="basic label-container" style="" x="-90.7578125" y="-27" width="181.515625" height="54"/>
+              <g class="label" style="" transform="translate(-60.7578125, -12)">
+                <rect/>
+                <foreignObject width="121.515625" height="24">
+                  <html:div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                    <html:span class="nodeLabel">
+                      <html:p>Agent 1-3 Worker</html:p>
+                    </html:span>
+                  </html:div>
+                </foreignObject>
+              </g>
+            </g>
+            <g class="node default" id="flowchart-LH-12" transform="translate(637.2109375, 70)">
+              <rect class="basic label-container" style="" x="-93.8359375" y="-27" width="187.671875" height="54"/>
+              <g class="label" style="" transform="translate(-63.8359375, -12)">
+                <rect/>
+                <foreignObject width="127.671875" height="24">
+                  <html:div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                    <html:span class="nodeLabel">
+                      <html:p>Longhorn Storage</html:p>
+                    </html:span>
+                  </html:div>
+                </foreignObject>
+              </g>
+            </g>
+            <g class="node default" id="flowchart-Trivy-13" transform="translate(637.2109375, 174)">
+              <rect class="basic label-container" style="" x="-78.515625" y="-27" width="157.03125" height="54"/>
+              <g class="label" style="" transform="translate(-48.515625, -12)">
+                <rect/>
+                <foreignObject width="97.03125" height="24">
+                  <html:div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                    <html:span class="nodeLabel">
+                      <html:p>Trivy Scanner</html:p>
+                    </html:span>
+                  </html:div>
+                </foreignObject>
+              </g>
+            </g>
+          </g>
+        </g>
+        <g class="node default" id="flowchart-Internet-0" transform="translate(538.23046875, 44.703125)">
+          <circle class="basic label-container" style="" r="36.703125" cx="0" cy="0"/>
+          <g class="label" style="" transform="translate(-29.203125, -12)">
+            <rect/>
+            <foreignObject width="58.40625" height="24">
+              <html:div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                <html:span class="nodeLabel">
+                  <html:p>Internet</html:p>
+                </html:span>
+              </html:div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="node default" id="flowchart-pfSense-1" transform="translate(538.23046875, 158.40625)">
+          <rect class="basic label-container" style="" x="-58.9375" y="-27" width="117.875" height="54"/>
+          <g class="label" style="" transform="translate(-28.9375, -12)">
+            <rect/>
+            <foreignObject width="57.875" height="24">
+              <html:div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                <html:span class="nodeLabel">
+                  <html:p>pfSense</html:p>
+                </html:span>
+              </html:div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="node default" id="flowchart-Bastion-3" transform="translate(415.5546875, 262.40625)">
+          <rect class="basic label-container" style="" x="-103.34375" y="-27" width="206.6875" height="54"/>
+          <g class="label" style="" transform="translate(-73.34375, -12)">
+            <rect/>
+            <foreignObject width="146.6875" height="24">
+              <html:div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                <html:span class="nodeLabel">
+                  <html:p>Bastion VM Tailscale</html:p>
+                </html:span>
+              </html:div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="node default" id="flowchart-Traefik-5" transform="translate(660.90625, 262.40625)">
+          <rect class="basic label-container" style="" x="-92.0078125" y="-27" width="184.015625" height="54"/>
+          <g class="label" style="" transform="translate(-62.0078125, -12)">
+            <rect/>
+            <foreignObject width="124.015625" height="24">
+              <html:div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                <html:span class="nodeLabel">
+                  <html:p>Traefik Ingress x2</html:p>
+                </html:span>
+              </html:div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="node default" id="flowchart-MetalLB-7" transform="translate(660.90625, 366.40625)">
+          <rect class="basic label-container" style="" x="-58.8828125" y="-27" width="117.765625" height="54"/>
+          <g class="label" style="" transform="translate(-28.8828125, -12)">
+            <rect/>
+            <foreignObject width="57.765625" height="24">
+              <html:div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                <html:span class="nodeLabel">
+                  <html:p>MetalLB</html:p>
+                </html:span>
+              </html:div>
+            </foreignObject>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
