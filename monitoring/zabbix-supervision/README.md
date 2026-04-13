@@ -24,7 +24,7 @@ Déploiement Zabbix en haute disponibilité pour surveiller une infrastructure r
 | Hôte | IP | Rôle |
 |---|---|---|
 | AD-DS / DNS / DHCP | 192.168.0.50 | Contrôleur de domaine, résolution de noms, attribution d'adresses |
-| GLPI / Apache | 192.168.0.51 | Gestion des actifs informatiques (standalone, BD sur Galera) |
+| GLPI / Apache / HAProxy | 192.168.0.51 | Gestion des actifs informatiques (standalone via HAProxy, BD sur les 3 nœuds Galera) |
 | Serveur de scripts | 192.168.0.52 | Scripts d'automatisation |
 | Zimbra | 192.168.0.53 | Serveur de messagerie |
 | VIP Keepalived | 192.168.0.100 | IP flottante pour le frontend Zabbix |
@@ -100,7 +100,7 @@ High-availability Zabbix deployment monitoring a multi-service network infrastru
 | Host | IP | Role |
 |---|---|---|
 | AD-DS / DNS / DHCP | 192.168.0.50 | Domain controller, name resolution, address assignment |
-| GLPI / Apache | 192.168.0.51 | IT asset management (standalone, DB on Galera) |
+| GLPI / Apache / HAProxy | 192.168.0.51 | IT asset management (standalone via HAProxy, DB distributed to all 3 Galera nodes) |
 | Script server | 192.168.0.52 | Automation scripts |
 | Zimbra | 192.168.0.53 | Email server |
 | Keepalived VIP | 192.168.0.100 | Floating IP for Zabbix frontend |
