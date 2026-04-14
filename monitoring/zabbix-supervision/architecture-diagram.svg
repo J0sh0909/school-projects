@@ -1,39 +1,212 @@
-<svg width="1000" height="820" xmlns="http://www.w3.org/2000/svg">
+<svg width="1200" height="730" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+
   <!-- Background -->
-  <rect width="100%" height="100%" fill="#ffffff" />
+  <rect width="1200" height="730" fill="#ffffff"/>
 
-  <!-- Cluster Perimeter -->
-  <rect x="50" y="50" width="900" height="680" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="2" />
-  <text x="500" y="80" font-family="sans-serif" font-weight="bold" font-size="20" text-anchor="middle" fill="#334155">Zabbix HA Monitoring Infrastructure</text>
+  <!-- Title -->
+  <text x="600" y="27" text-anchor="middle" font-size="18" font-weight="bold" fill="#1e293b">Zabbix HA Monitoring Infrastructure</text>
+  <text x="600" y="46" text-anchor="middle" font-size="11" fill="#64748b">2x Zabbix + Keepalived VIP + HAProxy  |  3-node MariaDB Galera  |  GLPI + Grafana + Samba  |  192.168.0.0/24</text>
 
-  <!-- Network / AD Layer -->
-  <rect x="70" y="100" width="860" height="100" rx="5" fill="#e2e8f0" stroke="#334155" />
-  <text x="500" y="130" font-family="sans-serif" font-weight="bold" font-size="16" text-anchor="middle" fill="#334155">Core Network and AD Stack</text>
-  <text x="500" y="155" font-family="sans-serif" font-size="14" text-anchor="middle" fill="#334155">AD-DS (192.168.0.50) | DHCP | DNS | Cisco 2960 Switch | Cisco 2911 Router</text>
+  <defs>
+    <marker id="arr" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#475569"/>
+    </marker>
+    <marker id="arr-blue" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#2563eb"/>
+    </marker>
+    <marker id="arr-cyan" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#0891b2"/>
+    </marker>
+    <marker id="arr-orange" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#ea580c"/>
+    </marker>
+  </defs>
 
-  <!-- HA Layer -->
-  <rect x="70" y="220" width="420" height="200" rx="5" fill="#e2e8f0" stroke="#334155" />
-  <text x="280" y="250" font-family="sans-serif" font-weight="bold" font-size="16" text-anchor="middle" fill="#334155">Zabbix HA Layer</text>
-  <text x="280" y="278" font-family="sans-serif" font-size="14" text-anchor="middle" fill="#334155">2x Zabbix Servers (Apache)</text>
-  <text x="280" y="298" font-family="sans-serif" font-size="14" text-anchor="middle" fill="#334155">Keepalived (VIP: 192.168.0.100)</text>
-  <text x="280" y="318" font-family="sans-serif" font-size="14" text-anchor="middle" fill="#334155">HAProxy Load Balancing</text>
-  <text x="280" y="338" font-family="sans-serif" font-size="12" text-anchor="middle" fill="#64748b">Alerts via Google SMTP (external)</text>
+  <!-- ===== NETWORK EDGE ===== -->
+  <rect x="30" y="62" width="1140" height="98" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="50" y="81" font-size="11" font-weight="bold" fill="#92400e">Network Edge</text>
 
-  <!-- Data Layer -->
-  <rect x="510" y="220" width="420" height="200" rx="5" fill="#e2e8f0" stroke="#334155" />
-  <text x="720" y="250" font-family="sans-serif" font-weight="bold" font-size="16" text-anchor="middle" fill="#334155">MariaDB Galera Cluster</text>
-  <text x="720" y="278" font-family="sans-serif" font-size="14" text-anchor="middle" fill="#334155">3x Synchronous Nodes</text>
-  <text x="720" y="298" font-family="sans-serif" font-size="14" text-anchor="middle" fill="#334155">192.168.0.201 / .202 / .203</text>
-  <text x="720" y="318" font-family="sans-serif" font-size="14" text-anchor="middle" fill="#334155">Shared Backend for Zabbix and GLPI</text>
+  <rect x="50" y="88" width="185" height="58" rx="5" fill="#d97706" stroke="#b45309" stroke-width="1.5"/>
+  <text x="142" y="110" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffffff">Cisco 2911</text>
+  <text x="142" y="127" text-anchor="middle" font-size="9" fill="#fef3c7">192.168.0.1  |  Router / Internet GW</text>
+  <text x="142" y="141" text-anchor="middle" font-size="9" fill="#fef3c7">Inter-VLAN routing, NAT</text>
 
-  <!-- Services -->
-  <rect x="70" y="440" width="860" height="160" rx="5" fill="#e2e8f0" stroke="#334155" />
-  <text x="500" y="470" font-family="sans-serif" font-weight="bold" font-size="16" text-anchor="middle" fill="#334155">Services and Asset Management</text>
-  <text x="500" y="498" font-family="sans-serif" font-size="14" text-anchor="middle" fill="#334155">GLPI (192.168.0.51) | Script Server (192.168.0.52) | Grafana (192.168.0.103)</text>
-  <text x="500" y="518" font-family="sans-serif" font-size="14" text-anchor="middle" fill="#334155">Samba / Windows (192.168.0.150)</text>
+  <rect x="255" y="88" width="170" height="58" rx="5" fill="#d97706" stroke="#b45309" stroke-width="1.5"/>
+  <text x="340" y="110" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffffff">Cisco 2960</text>
+  <text x="340" y="127" text-anchor="middle" font-size="9" fill="#fef3c7">Layer 2 switch</text>
+  <text x="340" y="141" text-anchor="middle" font-size="9" fill="#fef3c7">Trunk ports  |  192.168.0.0/24</text>
 
-  <!-- External SMTP box -->
-  <rect x="70" y="625" width="860" height="80" rx="5" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6,3" />
-  <text x="500" y="655" font-family="sans-serif" font-weight="bold" font-size="15" text-anchor="middle" fill="#64748b">External -- Google SMTP</text>
-  <text x="500" y="678" font-family="sans-serif" font-size="13" text-anchor="middle" fill="#64748b">smtp.gmail.com:587 (STARTTLS) -- Zabbix alert relay only, no local mail server</text>
+  <rect x="445" y="88" width="220" height="58" rx="5" fill="#7c3aed" stroke="#6d28d9" stroke-width="1.5"/>
+  <text x="555" y="110" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffffff">AD-DS / DNS / DHCP</text>
+  <text x="555" y="127" text-anchor="middle" font-size="9" fill="#ede9fe">192.168.0.50  |  Windows Server</text>
+  <text x="555" y="141" text-anchor="middle" font-size="9" fill="#ede9fe">Domain controller, name resolution</text>
+
+  <!-- Router -> Switch -->
+  <line x1="235" y1="117" x2="255" y2="117" stroke="#d97706" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Switch -> Zabbix HA zone (vertical) -->
+  <line x1="340" y1="160" x2="340" y2="178" stroke="#d97706" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Switch -> Galera zone (vertical, via center-right of network edge) -->
+  <line x1="875" y1="160" x2="875" y2="178" stroke="#d97706" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arr)"/>
+
+  <!-- ===== ZABBIX HA ZONE ===== -->
+  <rect x="30" y="178" width="545" height="280" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="50" y="197" font-size="11" font-weight="bold" fill="#1d4ed8">Zabbix HA -- Keepalived + HAProxy</text>
+
+  <!-- Keepalived VIP badge -->
+  <rect x="50" y="205" width="505" height="42" rx="5" fill="#1d4ed8" stroke="#1e3a8a" stroke-width="1.5"/>
+  <text x="302" y="222" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffffff">Keepalived VIP  --  192.168.0.100  (floating)</text>
+  <text x="302" y="239" text-anchor="middle" font-size="9" fill="#bfdbfe">Active node holds VIP  |  Standby takes over automatically on failure</text>
+
+  <!-- Zabbix Server 1 -->
+  <rect x="50" y="258" width="235" height="188" rx="5" fill="#2563eb" stroke="#1d4ed8" stroke-width="1.5"/>
+  <text x="167" y="278" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffffff">Zabbix Server 1</text>
+  <text x="167" y="296" text-anchor="middle" font-size="9" fill="#bfdbfe">192.168.0.101</text>
+  <text x="167" y="313" text-anchor="middle" font-size="9" fill="#bfdbfe">Zabbix server process</text>
+  <text x="167" y="330" text-anchor="middle" font-size="9" fill="#bfdbfe">Apache frontend</text>
+  <text x="167" y="347" text-anchor="middle" font-size="9" fill="#bfdbfe">HAProxy (frontend + DB LB)</text>
+  <text x="167" y="364" text-anchor="middle" font-size="9" fill="#bfdbfe">Keepalived -- active node</text>
+  <text x="167" y="381" text-anchor="middle" font-size="9" fill="#93c5fd">Holds VIP, runs active checks</text>
+  <text x="167" y="398" text-anchor="middle" font-size="9" fill="#93c5fd">Sends alerts via Google SMTP</text>
+  <text x="167" y="415" text-anchor="middle" font-size="9" fill="#93c5fd">Stores data in Galera backend</text>
+  <text x="167" y="432" text-anchor="middle" font-size="9" fill="#93c5fd">Polls zabbix_agentd on all hosts</text>
+
+  <!-- Zabbix Server 2 -->
+  <rect x="305" y="258" width="235" height="188" rx="5" fill="#2563eb" stroke="#1d4ed8" stroke-width="1.5"/>
+  <text x="422" y="278" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffffff">Zabbix Server 2</text>
+  <text x="422" y="296" text-anchor="middle" font-size="9" fill="#bfdbfe">192.168.0.102</text>
+  <text x="422" y="313" text-anchor="middle" font-size="9" fill="#bfdbfe">Zabbix server process</text>
+  <text x="422" y="330" text-anchor="middle" font-size="9" fill="#bfdbfe">Apache frontend</text>
+  <text x="422" y="347" text-anchor="middle" font-size="9" fill="#bfdbfe">HAProxy (frontend + DB LB)</text>
+  <text x="422" y="364" text-anchor="middle" font-size="9" fill="#bfdbfe">Keepalived -- standby node</text>
+  <text x="422" y="381" text-anchor="middle" font-size="9" fill="#93c5fd">Mirrors config of Server 1</text>
+  <text x="422" y="398" text-anchor="middle" font-size="9" fill="#93c5fd">Takes over VIP on active failure</text>
+  <text x="422" y="415" text-anchor="middle" font-size="9" fill="#93c5fd">Identical stack, passive until</text>
+  <text x="422" y="432" text-anchor="middle" font-size="9" fill="#93c5fd">failover occurs</text>
+
+  <!-- Keepalived VRRP sync between the two servers -->
+  <line x1="285" y1="346" x2="305" y2="346" stroke="#93c5fd" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arr-blue)"/>
+  <line x1="305" y1="356" x2="285" y2="356" stroke="#93c5fd" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arr-blue)"/>
+  <text x="295" y="341" text-anchor="middle" font-size="8" fill="#1d4ed8">VRRP</text>
+
+  <!-- ===== GALERA CLUSTER ZONE ===== -->
+  <rect x="595" y="178" width="575" height="280" rx="8" fill="#cffafe" stroke="#0891b2" stroke-width="2"/>
+  <text x="615" y="197" font-size="11" font-weight="bold" fill="#155e75">MariaDB Galera Cluster -- Synchronous Replication</text>
+  <text x="882" y="213" text-anchor="middle" font-size="9" fill="#0e7490">Every write committed to all 3 nodes before acknowledged  |  Zero data loss on failover</text>
+
+  <!-- Galera Node 1 -->
+  <rect x="610" y="222" width="163" height="222" rx="5" fill="#0891b2" stroke="#0e7490" stroke-width="1.5"/>
+  <text x="691" y="242" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffffff">Galera Node 1</text>
+  <text x="691" y="260" text-anchor="middle" font-size="9" fill="#cffafe">192.168.0.201</text>
+  <text x="691" y="277" text-anchor="middle" font-size="9" fill="#cffafe">MariaDB</text>
+  <text x="691" y="294" text-anchor="middle" font-size="9" fill="#cffafe">Galera wsrep</text>
+  <text x="691" y="311" text-anchor="middle" font-size="9" fill="#a5f3fc">Shared backend</text>
+  <text x="691" y="328" text-anchor="middle" font-size="9" fill="#a5f3fc">for Zabbix + GLPI</text>
+  <text x="691" y="345" text-anchor="middle" font-size="9" fill="#a5f3fc">via HAProxy LB</text>
+
+  <!-- Galera Node 2 -->
+  <rect x="791" y="222" width="163" height="222" rx="5" fill="#0891b2" stroke="#0e7490" stroke-width="1.5"/>
+  <text x="872" y="242" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffffff">Galera Node 2</text>
+  <text x="872" y="260" text-anchor="middle" font-size="9" fill="#cffafe">192.168.0.202</text>
+  <text x="872" y="277" text-anchor="middle" font-size="9" fill="#cffafe">MariaDB</text>
+  <text x="872" y="294" text-anchor="middle" font-size="9" fill="#cffafe">Galera wsrep</text>
+  <text x="872" y="311" text-anchor="middle" font-size="9" fill="#a5f3fc">Shared backend</text>
+  <text x="872" y="328" text-anchor="middle" font-size="9" fill="#a5f3fc">for Zabbix + GLPI</text>
+  <text x="872" y="345" text-anchor="middle" font-size="9" fill="#a5f3fc">via HAProxy LB</text>
+
+  <!-- Galera Node 3 -->
+  <rect x="972" y="222" width="163" height="222" rx="5" fill="#0891b2" stroke="#0e7490" stroke-width="1.5"/>
+  <text x="1053" y="242" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffffff">Galera Node 3</text>
+  <text x="1053" y="260" text-anchor="middle" font-size="9" fill="#cffafe">192.168.0.203</text>
+  <text x="1053" y="277" text-anchor="middle" font-size="9" fill="#cffafe">MariaDB</text>
+  <text x="1053" y="294" text-anchor="middle" font-size="9" fill="#cffafe">Galera wsrep</text>
+  <text x="1053" y="311" text-anchor="middle" font-size="9" fill="#a5f3fc">Shared backend</text>
+  <text x="1053" y="328" text-anchor="middle" font-size="9" fill="#a5f3fc">for Zabbix + GLPI</text>
+  <text x="1053" y="345" text-anchor="middle" font-size="9" fill="#a5f3fc">via HAProxy LB</text>
+
+  <!-- Galera wsrep sync arrows between nodes -->
+  <line x1="773" y1="333" x2="791" y2="333" stroke="#a5f3fc" stroke-width="1.5" stroke-dasharray="3,2" marker-end="url(#arr-cyan)"/>
+  <line x1="791" y1="343" x2="773" y2="343" stroke="#a5f3fc" stroke-width="1.5" stroke-dasharray="3,2" marker-end="url(#arr-cyan)"/>
+  <text x="782" y="328" text-anchor="middle" font-size="8" fill="#0e7490">wsrep</text>
+
+  <line x1="954" y1="333" x2="972" y2="333" stroke="#a5f3fc" stroke-width="1.5" stroke-dasharray="3,2" marker-end="url(#arr-cyan)"/>
+  <line x1="972" y1="343" x2="954" y2="343" stroke="#a5f3fc" stroke-width="1.5" stroke-dasharray="3,2" marker-end="url(#arr-cyan)"/>
+  <text x="963" y="328" text-anchor="middle" font-size="8" fill="#0e7490">wsrep</text>
+
+  <!-- HAProxy DB connection: Zabbix HA zone -> Galera zone -->
+  <line x1="575" y1="318" x2="595" y2="318" stroke="#0891b2" stroke-width="2.5" marker-end="url(#arr-cyan)"/>
+  <text x="585" y="311" text-anchor="middle" font-size="8" fill="#0e7490">HAProxy</text>
+  <text x="585" y="327" text-anchor="middle" font-size="8" fill="#0e7490">DB</text>
+
+  <!-- ===== SERVICES ZONE ===== -->
+  <rect x="30" y="475" width="1140" height="148" rx="8" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <text x="50" y="494" font-size="11" font-weight="bold" fill="#1e293b">Monitored Services -- Zabbix agents on all hosts</text>
+
+  <!-- GLPI -->
+  <rect x="50" y="502" width="238" height="108" rx="5" fill="#64748b" stroke="#475569" stroke-width="1.5"/>
+  <text x="169" y="522" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffffff">GLPI</text>
+  <text x="169" y="540" text-anchor="middle" font-size="9" fill="#f1f5f9">192.168.0.51</text>
+  <text x="169" y="557" text-anchor="middle" font-size="9" fill="#f1f5f9">IT asset management</text>
+  <text x="169" y="574" text-anchor="middle" font-size="9" fill="#f1f5f9">Apache + HAProxy</text>
+  <text x="169" y="591" text-anchor="middle" font-size="9" fill="#cbd5e1">DB routed to Galera via HAProxy</text>
+
+  <!-- Script Server -->
+  <rect x="306" y="502" width="195" height="108" rx="5" fill="#7c3aed" stroke="#6d28d9" stroke-width="1.5"/>
+  <text x="403" y="522" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffffff">Script Server</text>
+  <text x="403" y="540" text-anchor="middle" font-size="9" fill="#ede9fe">192.168.0.52</text>
+  <text x="403" y="557" text-anchor="middle" font-size="9" fill="#ede9fe">Automation scripts</text>
+  <text x="403" y="574" text-anchor="middle" font-size="9" fill="#ddd6fe">CPU, RAM, disk, net I/O</text>
+  <text x="403" y="591" text-anchor="middle" font-size="9" fill="#ddd6fe">General metrics</text>
+
+  <!-- Grafana -->
+  <rect x="519" y="502" width="195" height="108" rx="5" fill="#f97316" stroke="#ea580c" stroke-width="1.5"/>
+  <text x="616" y="522" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffffff">Grafana</text>
+  <text x="616" y="540" text-anchor="middle" font-size="9" fill="#fff7ed">192.168.0.103</text>
+  <text x="616" y="557" text-anchor="middle" font-size="9" fill="#fff7ed">Dashboard visualization</text>
+  <text x="616" y="574" text-anchor="middle" font-size="9" fill="#ffedd5">Data source: Zabbix API</text>
+  <text x="616" y="591" text-anchor="middle" font-size="9" fill="#ffedd5">General metrics monitored</text>
+
+  <!-- Samba -->
+  <rect x="732" y="502" width="228" height="108" rx="5" fill="#16a34a" stroke="#15803d" stroke-width="1.5"/>
+  <text x="846" y="522" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffffff">Samba (Windows)</text>
+  <text x="846" y="540" text-anchor="middle" font-size="9" fill="#dcfce7">192.168.0.150</text>
+  <text x="846" y="557" text-anchor="middle" font-size="9" fill="#dcfce7">Dept-based file sharing</text>
+  <text x="846" y="574" text-anchor="middle" font-size="9" fill="#dcfce7">JIT user dir provisioning</text>
+  <text x="846" y="591" text-anchor="middle" font-size="9" fill="#bbf7d0">Primary monitored service</text>
+  <text x="846" y="605" text-anchor="middle" font-size="9" fill="#bbf7d0">Custom: shares, conns, storage</text>
+
+  <!-- ===== EXTERNAL SMTP ===== -->
+  <rect x="30" y="640" width="1140" height="70" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="600" y="666" text-anchor="middle" font-size="12" font-weight="bold" fill="#64748b">External  --  Google SMTP</text>
+  <text x="600" y="686" text-anchor="middle" font-size="10" fill="#94a3b8">smtp.gmail.com:587  |  STARTTLS  |  Zabbix relays alert notifications outbound  |  No local mail server</text>
+
+  <!-- ===== INTER-ZONE ARROWS ===== -->
+
+  <!-- GLPI -> Galera (GLPI has its own HAProxy for DB connections) -->
+  <!-- Route: GLPI top (169,502) -> up to (169,466) -> right to (691,466) -> up into Galera (691,458) -->
+  <line x1="169" y1="502" x2="169" y2="466" stroke="#64748b" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="169" y1="466" x2="691" y2="466" stroke="#64748b" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="691" y1="466" x2="691" y2="458" stroke="#64748b" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arr-cyan)"/>
+  <text x="398" y="461" text-anchor="middle" font-size="9" fill="#475569">GLPI DB via HAProxy</text>
+
+  <!-- Grafana -> Zabbix API (Grafana reads metrics from Zabbix) -->
+  <!-- Route: Grafana top (616,502) -> up to (616,472) -> left to (302,472) -> up into Zabbix zone (302,458) -->
+  <line x1="616" y1="502" x2="616" y2="472" stroke="#f97316" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="616" y1="472" x2="302" y2="472" stroke="#f97316" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="302" y1="472" x2="302" y2="458" stroke="#f97316" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arr-orange)"/>
+  <text x="460" y="468" text-anchor="middle" font-size="9" fill="#ea580c">Grafana -- Zabbix API datasource</text>
+
+  <!-- Zabbix polls agents: arrow from Zabbix HA zone bottom to services zone -->
+  <line x1="420" y1="458" x2="420" y2="475" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arr-blue)"/>
+  <text x="456" y="469" font-size="9" fill="#1d4ed8">agent polling</text>
+
+  <!-- Zabbix -> Google SMTP alert relay (over-the-top routing) -->
+  <!-- Route: VIP badge right (555,196) -> up to (555,162) -> right to (1185,162) -> down to (1185,675) -> left into SMTP (1170,675) -->
+  <line x1="555" y1="196" x2="555" y2="162" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="555" y1="162" x2="1185" y2="162" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="1185" y1="162" x2="1185" y2="675" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="1185" y1="675" x2="1170" y2="675" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arr)"/>
+  <text x="870" y="156" text-anchor="middle" font-size="9" fill="#64748b">Alert notifications</text>
+
 </svg>
