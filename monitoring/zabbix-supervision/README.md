@@ -6,12 +6,12 @@
 
 # Infrastructure de supervision Zabbix haute disponibilité
 
-Déploiement Zabbix en haute disponibilité pour surveiller une infrastructure réseau multi-services. Deux serveurs Zabbix fonctionnent derrière HAProxy avec Keepalived gérant une VIP flottante, soutenu par un cluster MariaDB Galera à 3 nœuds avec réplication synchrone. GLPI fonctionne en standalone mais partage le même backend Galera via HAProxy pour sa base de données. Chaque membre de l'équipe a déployé un service réseau et configuré Zabbix pour collecter des métriques générales et spécifiques au service.
+Déploiement Zabbix en haute disponibilité pour surveiller une infrastructure réseau multi-services. Deux serveurs Zabbix fonctionnent derrière HAProxy avec Keepalived gérant une VIP flottante, soutenu par un cluster MariaDB Galera à 3 nœuds avec réplication synchrone. GLPI fonctionne en standalone mais partage le même backend Galera via HAProxy pour sa base de données. Chaque membre de l'équipe a déployé un service réseau et configuré Zabbix pour collecter des métriques générales et spécifiques au service. Les alertes Zabbix sont relayées par SMTP externe via Google (pas de serveur mail local).
 
 > **Cours :** Supervision
 > **Équipe :** 3 membres
 > **Ma contribution :** Zabbix HA (les deux serveurs, Keepalived, HAProxy), cluster Galera, GLPI, configurations switch/routeur Cisco, AD-DS/DNS/DHCP
-> **Coéquipiers :** Zimbra, Grafana, serveur de scripts, service Samba + supervision
+> **Coéquipiers :** Grafana, serveur de scripts, service Samba + supervision
 
 ---
 
@@ -26,7 +26,6 @@ Déploiement Zabbix en haute disponibilité pour surveiller une infrastructure r
 | AD-DS / DNS / DHCP | 192.168.0.50 | Contrôleur de domaine, résolution de noms, attribution d'adresses |
 | GLPI / Apache / HAProxy | 192.168.0.51 | Gestion des actifs informatiques (standalone via HAProxy, BD sur les 3 nœuds Galera) |
 | Serveur de scripts | 192.168.0.52 | Scripts d'automatisation |
-| Zimbra | 192.168.0.53 | Serveur de messagerie |
 | VIP Keepalived | 192.168.0.100 | IP flottante pour le frontend Zabbix |
 | Zabbix 1 / Apache / HAProxy | 192.168.0.101 | Serveur Zabbix + nœud HA |
 | Zabbix 2 / Apache / HAProxy | 192.168.0.102 | Serveur Zabbix + nœud HA |
@@ -37,6 +36,8 @@ Déploiement Zabbix en haute disponibilité pour surveiller une infrastructure r
 | MariaDB / Galera 3 | 192.168.0.203 | Nœud de base de données |
 | Cisco 2960 | - | Commutateur de couche 2 (trunk) |
 | Cisco 2911 | 192.168.0.1 | Routeur / passerelle internet |
+
+> **Notifications :** Aucun serveur mail local. Zabbix est configuré pour relayer les alertes via le SMTP de Google (smtp.gmail.com:587, STARTTLS).
 
 ---
 
@@ -72,7 +73,7 @@ Le service choisi par l'équipe était un serveur de fichiers Samba sous Windows
 
 ## Tech stack
 
-Zabbix, MariaDB Galera, HAProxy, Keepalived, GLPI, Apache, Cisco IOS, Windows Server (AD-DS, DNS, DHCP), Samba, Grafana, Zimbra
+Zabbix, MariaDB Galera, HAProxy, Keepalived, GLPI, Apache, Cisco IOS, Windows Server (AD-DS, DNS, DHCP), Samba, Grafana, Google SMTP
 
 ---
 
@@ -82,12 +83,12 @@ Zabbix, MariaDB Galera, HAProxy, Keepalived, GLPI, Apache, Cisco IOS, Windows Se
 
 # Zabbix HA Monitoring Infrastructure
 
-High-availability Zabbix deployment monitoring a multi-service network infrastructure. Two Zabbix servers run behind HAProxy with Keepalived managing a floating VIP, backed by a 3-node MariaDB Galera cluster using synchronous replication. GLPI runs standalone but shares the same Galera backend via HAProxy for its database. Each team member deployed a network service and configured Zabbix to collect both general and service-specific metrics.
+High-availability Zabbix deployment monitoring a multi-service network infrastructure. Two Zabbix servers run behind HAProxy with Keepalived managing a floating VIP, backed by a 3-node MariaDB Galera cluster using synchronous replication. GLPI runs standalone but shares the same Galera backend via HAProxy for its database. Each team member deployed a network service and configured Zabbix to collect both general and service-specific metrics. Zabbix alert notifications are relayed through Google's external SMTP -- no local mail server.
 
 > **Course:** Supervision
 > **Team:** 3 members
 > **My scope:** Zabbix HA (both servers, Keepalived, HAProxy), Galera cluster, GLPI, Cisco switch/router configs, AD-DS/DNS/DHCP
-> **Teammates:** Zimbra, Grafana, script server, Samba service + monitoring
+> **Teammates:** Grafana, script server, Samba service + monitoring
 
 ---
 
@@ -102,7 +103,6 @@ High-availability Zabbix deployment monitoring a multi-service network infrastru
 | AD-DS / DNS / DHCP | 192.168.0.50 | Domain controller, name resolution, address assignment |
 | GLPI / Apache / HAProxy | 192.168.0.51 | IT asset management (standalone via HAProxy, DB distributed to all 3 Galera nodes) |
 | Script server | 192.168.0.52 | Automation scripts |
-| Zimbra | 192.168.0.53 | Email server |
 | Keepalived VIP | 192.168.0.100 | Floating IP for Zabbix frontend |
 | Zabbix 1 / Apache / HAProxy | 192.168.0.101 | Zabbix server + HA node |
 | Zabbix 2 / Apache / HAProxy | 192.168.0.102 | Zabbix server + HA node |
@@ -113,6 +113,8 @@ High-availability Zabbix deployment monitoring a multi-service network infrastru
 | MariaDB / Galera 3 | 192.168.0.203 | Database node |
 | Cisco 2960 | - | Layer 2 switch (trunk) |
 | Cisco 2911 | 192.168.0.1 | Router / internet gateway |
+
+> **Notifications:** No local mail server. Zabbix is configured to relay alerts via Google SMTP (smtp.gmail.com:587, STARTTLS).
 
 ---
 
@@ -148,4 +150,4 @@ The team's chosen service was a Samba file server running on Windows (without GP
 
 ## Tech stack
 
-Zabbix, MariaDB Galera, HAProxy, Keepalived, GLPI, Apache, Cisco IOS, Windows Server (AD-DS, DNS, DHCP), Samba, Grafana, Zimbra
+Zabbix, MariaDB Galera, HAProxy, Keepalived, GLPI, Apache, Cisco IOS, Windows Server (AD-DS, DNS, DHCP), Samba, Grafana, Google SMTP
