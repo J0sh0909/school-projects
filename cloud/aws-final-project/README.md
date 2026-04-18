@@ -9,8 +9,14 @@
 Infrastructure AWS multi-comptes déployant Mattermost, Nextcloud, GLPI et une base de données MySQL gérée, réparties sur deux VPC avec peering, accès SSH sécurisé par VPN, et surveillance CloudWatch avec alertes SNS.
 
 > **Cours :** 420-H73-RO
-> **Rôle :** Responsable du compte B (serveur GLPI, passerelle VPN, groupes de sécurité, peering VPC). A aussi configuré Mattermost dans le compte A et contribué à la mise en place du RDS.
 > **Équipe :** 4 membres - projet final collaboratif
+>
+> **Ma contribution (responsable du compte B) :**
+> - Configuration complète du **serveur GLPI** et déploiement de **tous les agents GLPIInventory** sur les instances EC2 des deux comptes
+> - Mise en place du **point de terminaison AWS Client VPN** et configuration du **client VPN** pour l'accès SSH sécurisé
+> - Configuration de **Mattermost** dans le compte A (malgré l'appartenance au compte B)
+> - Contribution à la mise en place du **RDS MySQL**, en m'appuyant sur mon expérience d'une configuration RDS dans un projet précédent
+> - Groupes de sécurité et peering VPC côté compte B
 
 ---
 
@@ -88,8 +94,14 @@ Dans un environnement de production :
 Multi-account AWS infrastructure deploying Mattermost, Nextcloud, GLPI, and a managed MySQL database across two VPCs with peering, VPN-secured SSH access, and CloudWatch monitoring with SNS alerting.
 
 > **Course:** 420-H73-RO
-> **Role:** Owned Account B (GLPI server, VPN gateway, security groups, VPC peering). Also configured Mattermost in Account A and contributed to the RDS setup.
 > **Team:** 4 members - collaborative final project
+>
+> **My contribution (owned Account B):**
+> - Full configuration of the **GLPI server** and deployment of **all GLPIInventory agents** across EC2 instances in both accounts
+> - Set up the **AWS Client VPN endpoint** and configured the **VPN client** for secure SSH access
+> - Configured **Mattermost** in Account A (despite owning Account B)
+> - Contributed to the **RDS MySQL** setup, drawing on prior experience configuring RDS on an earlier project
+> - Security groups and VPC peering on the Account B side
 
 ---
 
